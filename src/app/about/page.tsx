@@ -195,18 +195,21 @@ export default function AboutPage() {
       </section>
 
       {/* ABOUT: Our Values */}
-      <section className="border-y border-slate-200 bg-slate-50/60 py-12 md:py-16">
+      <section className="border-y border-slate-200 bg-gradient-to-b from-slate-50 to-white py-16 md:py-20 reveal">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="text-center">
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+            <div className="inline-block rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
+              ⭐ Our Principles
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
               Our Values
             </h2>
-            <p className="mx-auto mt-3 text-sm text-slate-600 md:text-base">
+            <p className="mx-auto mt-4 text-lg text-slate-600 max-w-2xl">
               The principles that guide everything we do
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 icon: "🤝",
@@ -228,44 +231,63 @@ export default function AboutPage() {
                 title: "Growth",
                 description: "We're obsessed with helping you grow, personally and professionally",
               },
-            ].map((value) => (
+            ].map((value, i) => (
               <div
                 key={value.title}
-                className="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm"
+                className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all hover:shadow-xl hover:-translate-y-2"
+                style={{transitionDelay: `${i * 0.1}s`}}
               >
-                <div className="text-4xl">{value.icon}</div>
-                <h3 className="mt-3 text-base font-semibold text-slate-900">
+                <div className="text-5xl mb-4 transition-transform group-hover:scale-110">{value.icon}</div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">
                   {value.title}
                 </h3>
-                <p className="mt-2 text-xs text-slate-600">{value.description}</p>
+                <p className="text-sm text-slate-600 leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ABOUT: CTA */}
-      <section className="border-t border-slate-200 bg-gradient-to-br from-primary to-slate-900 py-12 text-white">
-        <div className="mx-auto max-w-4xl px-4 text-center md:px-6">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-            Want to be part of our story?
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-200 md:text-base">
-            Whether you want to learn or mentor, there's a place for you in the Datanerdz AI community
-          </p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/join-student"
-              className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-lg transition hover:bg-slate-100"
-            >
-              Join as Student
-            </Link>
-            <Link
-              href="/join-mentor"
-              className="rounded-full border-2 border-white px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              Become a Mentor
-            </Link>
+      {/* ABOUT: CTA with Video Background */}
+      <section className="relative min-h-[60vh] flex items-center border-t border-slate-200 overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/5377697-uhd_2160_3840_25fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-900/85 to-slate-900/90 z-[1]"></div>
+        
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center md:px-6 text-white">
+          <div className="reveal">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+              Want to Be Part of Our{" "}
+              <span className="gradient-text">Story</span>?
+            </h2>
+            <p className="mx-auto max-w-2xl text-xl text-slate-200 leading-relaxed mb-10">
+              Whether you want to learn or mentor, there's a place for you in the Datanerdz AI community
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <Link
+                href="/join-student"
+                className="group relative overflow-hidden rounded-full bg-white px-10 py-5 text-base font-semibold text-slate-900 shadow-2xl transition hover:scale-105"
+              >
+                <span className="relative z-10">Join as Student</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 transition group-hover:opacity-100"></div>
+              </Link>
+              <Link
+                href="/join-mentor"
+                className="rounded-full border-2 border-white px-10 py-5 text-base font-semibold text-white transition hover:bg-white/20 hover:scale-105"
+              >
+                Become a Mentor
+              </Link>
+            </div>
           </div>
         </div>
       </section>
