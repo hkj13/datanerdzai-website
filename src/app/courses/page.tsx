@@ -1,164 +1,286 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Courses Offered | DatanerdzAI",
-  description:
-    "Explore DatanerdzAI courses in TechSkill foundations, Data Analytics, Data Science, Finance, Development, Marketing and Studentpreneurship.",
+import { useState } from "react";
+import Link from "next/link";
+
+type Course = {
+  title: string;
+  description: string;
+  level: string;
+  duration: string;
+  format: string;
+  category: string;
 };
 
+const courses: Course[] = [
+  {
+    title: "Data Analytics Bootcamp",
+    description:
+      "Master Excel, SQL, Power BI, and Tableau. Learn to build business dashboards, perform data analysis, and create insightful visualizations using real business cases.",
+    level: "Beginner",
+    duration: "8 weeks",
+    format: "Live + Recorded",
+    category: "Data & Analytics",
+  },
+  {
+    title: "Python for Data Science",
+    description:
+      "Learn Python programming, data manipulation with Pandas, NumPy, data visualization, and statistical analysis for data-driven decision making.",
+    level: "Beginner",
+    duration: "10 weeks",
+    format: "Live + Recorded",
+    category: "Data & Analytics",
+  },
+  {
+    title: "Machine Learning Fundamentals",
+    description:
+      "Understand ML algorithms, build predictive models, work with scikit-learn, and deploy basic ML projects. Includes hands-on case studies.",
+    level: "Intermediate",
+    duration: "12 weeks",
+    format: "Live + Recorded",
+    category: "AI & Machine Learning",
+  },
+  {
+    title: "Deep Learning & Neural Networks",
+    description:
+      "Explore neural networks, CNNs, RNNs, TensorFlow, Keras. Build image classification, NLP models and understand modern AI applications.",
+    level: "Advanced",
+    duration: "14 weeks",
+    format: "Live + Recorded",
+    category: "AI & Machine Learning",
+  },
+  {
+    title: "Full Stack Web Development (MERN)",
+    description:
+      "Build complete web applications with MongoDB, Express, React, Node.js. Learn REST APIs, authentication, deployment, and modern web practices.",
+    level: "Intermediate",
+    duration: "16 weeks",
+    format: "Live + Recorded",
+    category: "Web Development",
+  },
+  {
+    title: "Frontend Development with React",
+    description:
+      "Master React, hooks, state management, routing, and component-based architecture. Build responsive, modern web interfaces.",
+    level: "Beginner",
+    duration: "8 weeks",
+    format: "Live + Recorded",
+    category: "Web Development",
+  },
+  {
+    title: "Backend Development with Node.js",
+    description:
+      "Learn server-side development, Express framework, databases (SQL & NoSQL), authentication, API design, and deployment strategies.",
+    level: "Intermediate",
+    duration: "10 weeks",
+    format: "Live + Recorded",
+    category: "Web Development",
+  },
+  {
+    title: "Mobile App Development (React Native)",
+    description:
+      "Build cross-platform mobile apps for iOS and Android using React Native. Learn navigation, state management, and app deployment.",
+    level: "Intermediate",
+    duration: "12 weeks",
+    format: "Live + Recorded",
+    category: "Mobile App Development",
+  },
+  {
+    title: "Android Development with Kotlin",
+    description:
+      "Create native Android apps with Kotlin, Android Studio, Material Design, Firebase integration, and Play Store publishing.",
+    level: "Beginner",
+    duration: "14 weeks",
+    format: "Live + Recorded",
+    category: "Mobile App Development",
+  },
+  {
+    title: "Resume Building & Interview Prep",
+    description:
+      "Craft ATS-friendly resumes, optimize LinkedIn, practice mock interviews, improve communication skills, and learn salary negotiation tactics.",
+    level: "Beginner",
+    duration: "4 weeks",
+    format: "Hybrid",
+    category: "Career & Soft Skills",
+  },
+  {
+    title: "Git, GitHub & Portfolio Building",
+    description:
+      "Master version control, collaborate on projects, build a stunning GitHub portfolio, and showcase your work to recruiters.",
+    level: "Beginner",
+    duration: "3 weeks",
+    format: "Recorded",
+    category: "Career & Soft Skills",
+  },
+];
+
+const categories = [
+  "All Courses",
+  "Data & Analytics",
+  "AI & Machine Learning",
+  "Web Development",
+  "Mobile App Development",
+  "Career & Soft Skills",
+];
+
 export default function CoursesPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All Courses");
+
+  const filteredCourses =
+    selectedCategory === "All Courses"
+      ? courses
+      : courses.filter((course) => course.category === selectedCategory);
+
   return (
     <div className="bg-surface">
-      {/* Hero */}
-      <section className="border-b border-slate-200 bg-slate-900 py-10 text-white md:py-14">
+      {/* COURSES: Hero Section */}
+      <section className="border-b border-slate-200 bg-slate-900 py-12 text-white md:py-16">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sky-300">
-            Courses Offered
-          </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-            Structured, industry-ready programs for every stage of your career.
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+            Courses We Offer
           </h1>
           <p className="mt-3 max-w-2xl text-sm text-slate-200 md:text-base">
-            Whether you are starting from basics or upskilling for your next role,
-            DatanerdzAI courses combine strong fundamentals, hands-on projects and
-            interview-focused preparation.
+            Structured, hands-on courses designed to take you from beginner to
+            job-ready. Learn with live sessions, build real projects, get mentored.
           </p>
         </div>
       </section>
 
-      {/* Categories overview */}
-      <section className="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14">
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              title: "TechSkill Foundation Kit",
-              level: "Beginner",
-              description:
-                "Programming logic, problem-solving, OOPs, data structures and core CS concepts.",
-            },
-            {
-              title: "Data Analytics & Visualisation",
-              level: "Beginner to Intermediate",
-              description:
-                "Excel, SQL, Power BI / Tableau with business dashboards and case studies.",
-            },
-            {
-              title: "Data Science & Machine Learning",
-              level: "Intermediate to Advanced",
-              description:
-                "Python, statistics, ML algorithms, model deployment basics and end-to-end projects.",
-            },
-            {
-              title: "Development (Java / Web / Python)",
-              level: "Beginner to Intermediate",
-              description:
-                "Core Java, web development, APIs and projects aligned to software engineering roles.",
-            },
-            {
-              title: "Finance & Business Analytics",
-              level: "Beginner to Intermediate",
-              description:
-                "Financial modelling, Excel, dashboards and analytics for business decision-making.",
-            },
-            {
-              title: "Marketing & Growth",
-              level: "Beginner to Intermediate",
-              description:
-                "Digital marketing, performance campaigns, social media and analytics.",
-            },
-          ].map((course) => (
-            <article
+      {/* COURSES: Category Filter */}
+      <section className="border-b border-slate-200 bg-slate-50/60 py-6">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                  selectedCategory === category
+                    ? "bg-primary text-white shadow-sm"
+                    : "bg-white text-slate-700 hover:bg-slate-100"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          <p className="mt-4 text-xs text-slate-600">
+            Showing {filteredCourses.length} course{filteredCourses.length !== 1 ? "s" : ""}
+          </p>
+        </div>
+      </section>
+
+      {/* COURSES: Course Grid */}
+      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredCourses.map((course) => (
+            <div
               key={course.title}
-              className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-4 text-sm shadow-sm"
+              className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md"
             >
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+              <div className="mb-3 flex items-center gap-2 text-xs">
+                <span className="rounded-full bg-green-100 px-2 py-1 font-medium text-green-700">
                   {course.level}
-                </p>
-                <h2 className="mt-2 text-sm font-semibold text-slate-900">
-                  {course.title}
-                </h2>
-                <p className="mt-2 text-xs leading-relaxed text-slate-600">
-                  {course.description}
-                </p>
+                </span>
+                <span className="text-slate-500">• {course.duration}</span>
               </div>
-              <div className="mt-3 text-[11px] text-slate-500">
-                <p>Includes live sessions, recordings, assignments and projects.</p>
+              <h3 className="text-base font-semibold text-slate-900">{course.title}</h3>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
+                {course.description}
+              </p>
+              <div className="mt-4 space-y-2 border-t border-slate-100 pt-4 text-xs">
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-slate-500">Format:</span>
+                  <span className="text-slate-700">{course.format}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="font-medium text-slate-500">Category:</span>
+                  <span className="text-slate-700">{course.category}</span>
+                </div>
               </div>
-            </article>
+              <button className="mt-4 w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-dark">
+                View Details / Apply
+              </button>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Highlights from existing site themes */}
-      <section className="border-y border-slate-200 bg-slate-50/60">
-        <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-700 md:px-6 md:py-14">
-          <h2 className="text-base font-semibold tracking-tight text-slate-900 md:text-lg">
-            What makes DatanerdzAI courses different?
-          </h2>
-          <div className="mt-5 grid gap-6 md:grid-cols-3">
-            <div>
-              <p className="text-sm font-semibold text-slate-900">
-                Thousands of premium lessons
-              </p>
-              <p className="mt-2 text-xs text-slate-600">
-                Concept videos, live problem-solving and doubt-clearing sessions
-                inspired by top-rated global courses.
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-900">
-                Projects, workshops & studentpreneurship
-              </p>
-              <p className="mt-2 text-xs text-slate-600">
-                Build industry-style projects, participate in themed workshops
-                and learn how to turn ideas into real products.
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-900">
-                Career & placement support
-              </p>
-              <p className="mt-2 text-xs text-slate-600">
-                Resume and LinkedIn reviews, mock interviews and referrals
-                through our hiring network wherever possible.
-              </p>
-            </div>
+      {/* COURSES: How Our Courses Work */}
+      <section className="border-y border-slate-200 bg-slate-50/60 py-12 md:py-16">
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+              How Our Courses Work
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-600 md:text-base">
+              A complete learning experience designed for real-world success
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: "📹",
+                title: "Live & Recorded Sessions",
+                description: "Join live classes or watch recordings at your own pace",
+              },
+              {
+                icon: "💻",
+                title: "Hands-On Assignments",
+                description: "Practice with real tasks after every module",
+              },
+              {
+                icon: "🎯",
+                title: "Capstone Projects",
+                description: "Build portfolio-ready projects with mentor guidance",
+              },
+              {
+                icon: "💬",
+                title: "Doubt Support",
+                description: "Get your questions answered on WhatsApp/Slack instantly",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm"
+              >
+                <div className="text-3xl">{item.icon}</div>
+                <h3 className="mt-3 text-sm font-semibold text-slate-900">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-xs text-slate-600">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Call to action */}
-      <section className="mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14">
-        <div className="grid gap-8 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm md:grid-cols-[1.2fr,1fr] md:p-7">
-          <div>
-            <h2 className="text-base font-semibold tracking-tight text-slate-900 md:text-lg">
-              Not sure which course to choose?
-            </h2>
-            <p className="mt-2 text-xs text-slate-600">
-              Share your background—branch, year of study or current role—and
-              our team will help you choose between TechSkill foundations, data,
-              development, finance or marketing tracks.
-            </p>
-            <ul className="mt-3 space-y-1 text-xs text-slate-700">
-              <li>• Tailored path based on your goals (placements, switch, higher studies)</li>
-              <li>• Details on duration, fees, EMIs and available batches</li>
-              <li>• Guidance on required pre-requisites and time commitment</li>
-            </ul>
-          </div>
-          <div className="space-y-3 text-xs text-slate-700">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
-              How to get started
-            </p>
-            <ol className="space-y-2 list-decimal pl-4">
-              <li>Visit the Contact Us page.</li>
-              <li>Share your course interest and preferred batch timing.</li>
-              <li>Our counsellor will call/WhatsApp you with next steps.</li>
-            </ol>
-            <p className="mt-1 text-[11px] text-slate-500">
-              We currently support online/live formats with limited in-person
-              workshops based on city and demand.
-            </p>
+      {/* COURSES: CTA */}
+      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+        <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
+          <h2 className="text-xl font-bold tracking-tight text-slate-900 md:text-2xl">
+            Not sure which course to choose?
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-600">
+            Book a free counselling call and we'll help you find the perfect course
+            based on your goals, background, and schedule.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/join-student"
+              className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-dark"
+            >
+              Join as Student
+            </Link>
+            <a
+              href="https://wa.me/919500795194"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-green-700"
+            >
+              WhatsApp Us
+            </a>
           </div>
         </div>
       </section>

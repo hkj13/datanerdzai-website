@@ -22,9 +22,12 @@ export const metadata: Metadata = {
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/courses", label: "Courses Offered" },
-  { href: "/clients", label: "Our Clients" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "/about", label: "About Us" },
+  { href: "/courses", label: "Courses We Offer" },
+  { href: "/events", label: "Events" },
+  { href: "/join-mentor", label: "Join as Mentor" },
+  { href: "/join-student", label: "Join as Student" },
+  { href: "/clients", label: "Clients" },
 ];
 
 export default function RootLayout({
@@ -85,18 +88,93 @@ export default function RootLayout({
           </main>
 
           <footer className="border-t border-slate-200 bg-slate-950 text-slate-200">
-            <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm md:flex-row md:items-center md:justify-between md:px-6">
-              <div>
-                <p className="font-semibold tracking-tight">DatanerdzAI</p>
-                <p className="text-xs text-slate-400">
-                  Upskilling students and professionals in data, tech, and business.
-                </p>
+            <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
+              <div className="grid gap-8 md:grid-cols-4">
+                {/* Brand Section */}
+                <div className="md:col-span-2">
+                  <p className="text-lg font-semibold tracking-tight">Datanerdz AI</p>
+                  <p className="mt-2 text-sm text-slate-400">
+                    A student-first learning community helping college students and freshers master tech skills, get mentorship, and build successful careers.
+                  </p>
+                  <div className="mt-4 space-y-2 text-sm">
+                    <p className="text-slate-400">
+                      <span className="font-medium text-white">Email:</span>{" "}
+                      <a href="mailto:contact@datanerdzai.com" className="hover:text-sky-300">
+                        contact@datanerdzai.com
+                      </a>
+                    </p>
+                    <p className="text-slate-400">
+                      <span className="font-medium text-white">Phone:</span>{" "}
+                      <a href="tel:+919500795194" className="hover:text-sky-300">
+                        +91 9500795194
+                      </a>
+                    </p>
+                    <a
+                      href="https://wa.me/919500795194"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-green-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-green-700"
+                    >
+                      Chat with us on WhatsApp
+                    </a>
+                  </div>
+                </div>
+
+                {/* Quick Links */}
+                <div>
+                  <p className="text-sm font-semibold">Quick Links</p>
+                  <ul className="mt-3 space-y-2 text-sm text-slate-400">
+                    {navItems.map((item) => (
+                      <li key={item.href}>
+                        <Link href={item.href} className="hover:text-white">
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Social Media */}
+                <div>
+                  <p className="text-sm font-semibold">Connect With Us</p>
+                  <div className="mt-3 flex gap-3">
+                    <a
+                      href="#"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-400 transition hover:bg-sky-600 hover:text-white"
+                      aria-label="LinkedIn"
+                    >
+                      <span className="text-sm">in</span>
+                    </a>
+                    <a
+                      href="#"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-400 transition hover:bg-sky-600 hover:text-white"
+                      aria-label="Twitter"
+                    >
+                      <span className="text-sm">𝕏</span>
+                    </a>
+                    <a
+                      href="#"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-400 transition hover:bg-pink-600 hover:text-white"
+                      aria-label="Instagram"
+                    >
+                      <span className="text-sm">📷</span>
+                    </a>
+                    <a
+                      href="#"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-400 transition hover:bg-red-600 hover:text-white"
+                      aria-label="YouTube"
+                    >
+                      <span className="text-sm">▶</span>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-4 text-xs text-slate-400">
-                <span>
-                  9 {new Date().getFullYear()} DatanerdzAI. All rights reserved.
-                </span>
-                <span>Crafting tomorrow's success.</span>
+
+              <div className="mt-8 border-t border-slate-800 pt-6 text-center text-xs text-slate-400">
+                <p>
+                  &copy; {new Date().getFullYear()} Datanerdz AI. All rights reserved. |
+                  Crafting tomorrow&apos;s success.
+                </p>
               </div>
             </div>
           </footer>
