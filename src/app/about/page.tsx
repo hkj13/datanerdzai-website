@@ -48,7 +48,7 @@ export default function AboutPage() {
               looking to switch careers, we're here to help you build skills that matter.
             </p>
             <p>
-              Today, we're a growing community of <strong>7000+ students and 50+ mentors</strong> 
+              Today, we're a growing community of <strong>7000+ students and 50+ mentors</strong>{" "}
               across India, learning together, building together, and growing together.
             </p>
           </div>

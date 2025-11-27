@@ -1,17 +1,55 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    // Scroll reveal animation
+    const handleScroll = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="bg-surface">
-      {/* HOME: Hero Section */}
-      <section className="border-b border-slate-200 bg-gradient-to-br from-slate-900 via-slate-900 to-primary text-white overflow-hidden">
-        <div className="mx-auto flex max-w-6xl flex-col items-start gap-10 px-4 py-16 md:flex-row md:items-center md:justify-between md:px-6 md:py-20">
+      {/* HOME: Hero Section with Video Background */}
+      <section className="relative min-h-[90vh] flex items-center border-b border-slate-200 text-white overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/853919-hd_1920_1080_25fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-primary/70 z-[1]"></div>
+        
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-10 px-4 py-16 md:flex-row md:items-center md:justify-between md:px-6 md:py-20">
           <div className="max-w-xl space-y-6 animate-fade-in-up">
-            <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+            <div className="inline-block rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-sky-300 mb-4">
+              🚀 Crafting Tomorrow's Success
+            </div>
+            <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl leading-tight">
               Learn. Build. Grow.{" "}
-              <span className="text-sky-300">Together</span> with Datanerdz AI
+              <span className="gradient-text">Together</span> with Datanerdz AI
             </h1>
-            <p className="text-balance text-base leading-relaxed text-slate-200 sm:text-lg delay-100">
+            <p className="text-balance text-lg leading-relaxed text-slate-300 sm:text-xl delay-100">
               A student-first learning community helping college students and freshers 
               master tech skills, get mentorship, and build successful careers.
             </p>
@@ -51,16 +89,28 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full max-w-md animate-scale-in delay-200">
-            <div className="rounded-2xl bg-white/10 p-1 backdrop-blur transition-transform hover:scale-105">
-              <div className="rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 p-6">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-sky-500/20 animate-pulse">
-                    <span className="text-3xl">🎓</span>
+            <div className="glass-dark rounded-3xl p-8 transition-all hover:scale-105 pulse-glow">
+              <div className="text-center">
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-purple-500 animate-float shadow-2xl">
+                  <span className="text-4xl">🎓</span>
+                </div>
+                <p className="text-2xl font-bold mb-3">Your Learning Journey Starts Here</p>
+                <p className="text-base text-slate-300 leading-relaxed">
+                  Join a thriving community of <span className="text-sky-300 font-bold">7000+ students</span> and <span className="text-purple-300 font-bold">50+ mentors</span> learning together, building together, and growing together.
+                </p>
+                <div className="mt-6 grid grid-cols-3 gap-4">
+                  <div className="glass rounded-lg p-3">
+                    <p className="text-2xl font-bold text-sky-300">7K+</p>
+                    <p className="text-xs text-slate-400">Students</p>
                   </div>
-                  <p className="text-lg font-semibold">Your learning journey starts here</p>
-                  <p className="mt-2 text-sm text-slate-300">
-                    Join a thriving community of 7000+ students and 50+ mentors learning together, building together, and growing together.
-                  </p>
+                  <div className="glass rounded-lg p-3">
+                    <p className="text-2xl font-bold text-purple-300">50+</p>
+                    <p className="text-xs text-slate-400">Mentors</p>
+                  </div>
+                  <div className="glass rounded-lg p-3">
+                    <p className="text-2xl font-bold text-pink-300">20+</p>
+                    <p className="text-xs text-slate-400">Courses</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -191,8 +241,83 @@ export default function Home() {
         </div>
       </section>
 
+      {/* HOME: Premium Split Video Section - Collaboration & Learning */}
+      <section className="relative overflow-hidden py-20 md:py-32 bg-gradient-to-b from-white to-slate-50">
+        <div className="mx-auto max-w-7xl px-4 md:px-6">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+            {/* Video Side */}
+            <div className="reveal relative order-2 lg:order-1">
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="h-full w-full object-cover aspect-[9/16]"
+                >
+                  <source src="/videos/5495896-hd_1080_1920_30fps.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+              </div>
+              {/* Floating badge */}
+              <div className="absolute -top-4 -left-4 glass-dark rounded-2xl p-4 shadow-xl animate-float">
+                <div className="flex items-center gap-3">
+                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-2xl">
+                    ✓
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-white">Live Sessions</p>
+                    <p className="text-xs text-slate-300">Interactive Learning</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Content Side */}
+            <div className="reveal order-1 lg:order-2 space-y-6">
+              <div className="inline-block rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white">
+                💡 Learn Together
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+                Collaborative Learning,{" "}
+                <span className="gradient-text">Real Results</span>
+              </h2>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Join live interactive sessions, work on team projects, and build your network while learning from industry experts. Our community-driven approach ensures you're never stuck alone.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
+                  <p className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Live</p>
+                  <p className="text-sm text-slate-600 mt-1">Interactive Sessions</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
+                  <p className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">24/7</p>
+                  <p className="text-sm text-slate-600 mt-1">Mentor Support</p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-3 pt-4">
+                <Link
+                  href="/courses"
+                  className="rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:shadow-xl hover:scale-105"
+                >
+                  Explore Courses →
+                </Link>
+                <Link
+                  href="/events"
+                  className="rounded-full border-2 border-slate-300 px-8 py-4 text-sm font-semibold text-slate-700 transition hover:border-purple-500 hover:text-purple-600"
+                >
+                  Join Free Events
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* HOME: Featured Courses Preview */}
-      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16 reveal">
         <div className="mb-8 flex items-end justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
@@ -264,8 +389,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* HOME: Data Visualization Video Section */}
+      <section className="relative overflow-hidden py-20 md:py-32">
+        {/* Background Video with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+          >
+            <source src="/videos/2278095-hd_1920_1080_30fps.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-purple-900/90 to-slate-900/95"></div>
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-6xl px-4 md:px-6 text-center text-white">
+          <div className="reveal">
+            <div className="inline-block rounded-full glass px-6 py-2 text-sm font-semibold uppercase tracking-wider text-sky-300 mb-6">
+              📊 Data-Driven Learning
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+              Master Skills That <span className="gradient-text">Matter</span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+              From Data Analytics to Full Stack Development, learn industry-relevant skills with hands-on projects, real datasets, and expert mentorship.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-12">
+              {[
+                { num: "100+", label: "Projects Built" },
+                { num: "95%", label: "Success Rate" },
+                { num: "500+", label: "Hiring Partners" },
+                { num: "₹8L", label: "Avg. Package" }
+              ].map((stat, i) => (
+                <div key={i} className="glass-dark rounded-2xl p-6 animate-scale-in" style={{animationDelay: `${i * 0.1}s`}}>
+                  <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                    {stat.num}
+                  </p>
+                  <p className="text-sm text-slate-400">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href="/courses"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-purple-600 px-10 py-5 text-lg font-semibold text-white shadow-2xl transition hover:scale-105 hover:shadow-purple-500/50"
+            >
+              Start Your Journey
+              <span className="text-2xl">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* HOME: Upcoming Events Preview */}
-      <section className="border-y border-slate-200 bg-slate-50/60 py-12 md:py-16">
+      <section className="border-y border-slate-200 bg-slate-50/60 py-12 md:py-16 reveal">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="mb-8 flex items-end justify-between">
             <div>
@@ -327,12 +507,15 @@ export default function Home() {
       </section>
 
       {/* HOME: Community & Testimonials */}
-      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16 reveal">
         <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+          <div className="inline-block rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
+            ⭐ Student Success Stories
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
             What Our Community Says
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-600 md:text-base">
+          <p className="mx-auto mt-3 max-w-2xl text-base text-slate-600">
             Real stories from students and mentors across India
           </p>
         </div>
@@ -345,6 +528,7 @@ export default function Home() {
               content:
                 "Datanerdz AI helped me transition from a confused fresher to landing a Data Analyst role. The mentors were super supportive and the projects were exactly what I needed for my resume!",
               rating: 5,
+              avatar: "👩‍💻"
             },
             {
               name: "Arjun Reddy",
@@ -352,6 +536,7 @@ export default function Home() {
               content:
                 "I was scared of coding. The community here made learning so easy and fun. Now I'm confident building full-stack apps. Best decision I made!",
               rating: 5,
+              avatar: "👨‍💼"
             },
             {
               name: "Divya Krishnan",
@@ -359,54 +544,95 @@ export default function Home() {
               content:
                 "The 1:1 mentorship was a game-changer. My mentor helped me with interview prep, resume and even connected me with opportunities. Forever grateful!",
               rating: 5,
+              avatar: "👩‍🎓"
             },
-          ].map((testimonial) => (
+          ].map((testimonial, i) => (
             <div
               key={testimonial.name}
-              className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 reveal"
+              style={{transitionDelay: `${i * 0.1}s`}}
             >
-              <div className="mb-3 flex gap-1 text-amber-400">
+              <div className="mb-4 flex gap-1 text-amber-400 text-lg">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
                   <span key={i}>⭐</span>
                 ))}
               </div>
-              <p className="text-sm leading-relaxed text-slate-700">
+              <p className="text-sm leading-relaxed text-slate-700 italic">
                 "{testimonial.content}"
               </p>
-              <div className="mt-4 border-t border-slate-100 pt-4">
-                <p className="text-sm font-semibold text-slate-900">
-                  {testimonial.name}
-                </p>
-                <p className="text-xs text-slate-500">{testimonial.role}</p>
+              <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-purple-400 to-pink-400 text-2xl">
+                  {testimonial.avatar}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-xs text-slate-500">{testimonial.role}</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* HOME: Final CTA Banner */}
-      <section className="border-t border-slate-200 bg-gradient-to-br from-primary to-slate-900 py-16 text-white">
-        <div className="mx-auto max-w-4xl px-4 text-center md:px-6">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Ready to start your Datanerdz AI journey?
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-200">
-            Join hundreds of students who are building skills, portfolios, and careers
-            with us
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/join-student"
-              className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-primary shadow-lg transition hover:bg-slate-100"
-            >
-              Join as Student
-            </Link>
-            <Link
-              href="/join-mentor"
-              className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              Become a Mentor
-            </Link>
+      {/* HOME: Final CTA with Coding Video Background */}
+      <section className="relative overflow-hidden min-h-[60vh] flex items-center border-t border-slate-200">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/3130284-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-purple-900/85 to-slate-900/90 z-[1]"></div>
+        
+        <div className="relative z-10 mx-auto max-w-5xl px-4 py-20 text-center md:px-6 text-white">
+          <div className="reveal">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
+              Ready to Start Your{" "}
+              <span className="gradient-text">Datanerdz AI</span> Journey?
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-xl text-slate-300 leading-relaxed">
+              Join <span className="font-bold text-sky-300">7000+ students</span> who are building skills, portfolios, and careers with us. Your future starts today!
+            </p>
+            
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-6">
+              <Link
+                href="/join-student"
+                className="group relative overflow-hidden rounded-full bg-white px-10 py-5 text-base font-semibold text-slate-900 shadow-2xl transition hover:scale-105"
+              >
+                <span className="relative z-10">Join as Student</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-purple-500 opacity-0 transition group-hover:opacity-100"></div>
+              </Link>
+              <Link
+                href="/join-mentor"
+                className="rounded-full border-2 border-white px-10 py-5 text-base font-semibold text-white transition hover:bg-white/20 hover:scale-105"
+              >
+                Become a Mentor
+              </Link>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-400">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">✓</span>
+                <span>Industry-Recognized Courses</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">✓</span>
+                <span>Lifetime Access</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">✓</span>
+                <span>Job Assistance</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
