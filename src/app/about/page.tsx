@@ -48,7 +48,7 @@ export default function AboutPage() {
               looking to switch careers, we're here to help you build skills that matter.
             </p>
             <p>
-              Today, we're a growing community of <strong>500+ students and 50+ mentors</strong> 
+              Today, we're a growing community of <strong>7000+ students and 50+ mentors</strong> 
               across India, learning together, building together, and growing together.
             </p>
           </div>
@@ -203,65 +203,6 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ABOUT: Team Section */}
-      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
-        <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-            Meet the Core Team
-          </h2>
-          <p className="mx-auto mt-3 text-sm text-slate-600 md:text-base">
-            The people behind Datanerdz AI
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              name: "Placeholder Name",
-              role: "Founder & Lead Mentor",
-              bio: "Ex-Data Scientist with 5+ years in ML and analytics. Passionate about making tech education accessible.",
-              image: "👨‍💻",
-            },
-            {
-              name: "Placeholder Name",
-              role: "Operations Lead",
-              bio: "Manages community operations, events, and student support. Your go-to person for any help.",
-              image: "👩‍💼",
-            },
-            {
-              name: "Placeholder Name",
-              role: "Curriculum Designer",
-              bio: "Designs course content and learning paths. 8+ years in EdTech and instructional design.",
-              image: "👨‍🏫",
-            },
-            {
-              name: "Placeholder Name",
-              role: "Mentor Coordinator",
-              bio: "Connects students with the right mentors. Builds mentor onboarding and training programs.",
-              image: "👩‍🎓",
-            },
-          ].map((member) => (
-            <div
-              key={member.name}
-              className="rounded-xl border border-slate-200 bg-white p-6 text-center shadow-sm"
-            >
-              <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-slate-100 text-4xl">
-                {member.image}
-              </div>
-              <h3 className="text-base font-semibold text-slate-900">{member.name}</h3>
-              <p className="mt-1 text-xs font-medium text-primary">{member.role}</p>
-              <p className="mt-3 text-xs leading-relaxed text-slate-600">{member.bio}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-8 text-center">
-          <p className="text-sm text-slate-600">
-            Plus <strong>50+ expert mentors</strong> from top companies helping students every day
-          </p>
         </div>
       </section>
 

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import CourseModal from "@/components/CourseModal";
 
 type Course = {
   title: string;
@@ -125,6 +126,7 @@ const categories = [
 
 export default function CoursesPage() {
   const [selectedCategory, setSelectedCategory] = useState("All Courses");
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   const filteredCourses =
     selectedCategory === "All Courses"
@@ -132,7 +134,12 @@ export default function CoursesPage() {
       : courses.filter((course) => course.category === selectedCategory);
 
   return (
-    <div className="bg-surface">
+    <>
+      <CourseModal
+        course={selectedCourse}
+        onClose={() => setSelectedCourse(null)}
+      />
+      <div className="bg-surface">
       {/* COURSES: Hero Section */}
       <section className="border-b border-slate-200 bg-slate-900 py-12 text-white md:py-16">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
@@ -198,7 +205,10 @@ export default function CoursesPage() {
                   <span className="text-slate-700">{course.category}</span>
                 </div>
               </div>
-              <button className="mt-4 w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-dark">
+              <button
+                onClick={() => setSelectedCourse(course)}
+                className="mt-4 w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-dark"
+              >
                 View Details / Apply
               </button>
             </div>
@@ -274,7 +284,7 @@ export default function CoursesPage() {
               Join as Student
             </Link>
             <a
-              href="https://wa.me/919500795194"
+              href="https://wa.me/919363932727"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-green-700"
@@ -285,5 +295,6 @@ export default function CoursesPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

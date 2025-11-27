@@ -4,8 +4,6 @@ import { useState } from "react";
 
 type Event = {
   title: string;
-  date: string;
-  time: string;
   mode: string;
   type: string;
   description: string;
@@ -15,8 +13,6 @@ type Event = {
 const events: Event[] = [
   {
     title: "Career in Data Science - Roadmap for Students",
-    date: "Dec 5, 2025",
-    time: "7:00 PM IST",
     mode: "Online",
     type: "Webinar",
     description:
@@ -25,8 +21,6 @@ const events: Event[] = [
   },
   {
     title: "Build Your First ML Model Workshop",
-    date: "Dec 10, 2025",
-    time: "6:00 PM IST",
     mode: "Online",
     type: "Workshop",
     description:
@@ -35,8 +29,6 @@ const events: Event[] = [
   },
   {
     title: "Resume Building & LinkedIn Optimization",
-    date: "Dec 15, 2025",
-    time: "8:00 PM IST",
     mode: "Online",
     type: "Workshop",
     description:
@@ -45,8 +37,6 @@ const events: Event[] = [
   },
   {
     title: "Full Stack Development Crash Course",
-    date: "Dec 20, 2025",
-    time: "7:00 PM IST",
     mode: "Online",
     type: "Workshop",
     description:
@@ -55,8 +45,6 @@ const events: Event[] = [
   },
   {
     title: "AI & ChatGPT for Students - Productivity Hacks",
-    date: "Nov 20, 2025",
-    time: "7:00 PM IST",
     mode: "Online",
     type: "Webinar",
     description:
@@ -65,8 +53,6 @@ const events: Event[] = [
   },
   {
     title: "Web Development Bootcamp - Day 1",
-    date: "Nov 10, 2025",
-    time: "6:00 PM IST",
     mode: "Online",
     type: "Workshop",
     description:
@@ -75,8 +61,6 @@ const events: Event[] = [
   },
   {
     title: "Mock Interview & Career Guidance Session",
-    date: "Nov 5, 2025",
-    time: "7:30 PM IST",
     mode: "Online",
     type: "Workshop",
     description:
@@ -85,8 +69,6 @@ const events: Event[] = [
   },
   {
     title: "Python for Beginners - Zero to Hero",
-    date: "Oct 25, 2025",
-    time: "8:00 PM IST",
     mode: "Online",
     type: "Webinar",
     description:
@@ -158,46 +140,52 @@ export default function EventsPage() {
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredEvents.map((event) => (
-              <div
-                key={event.title + event.date}
-                className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md"
-              >
-                <div className="mb-3 flex items-center gap-2 text-xs">
-                  <span
-                    className={`rounded-full px-2 py-1 font-medium ${
-                      event.type === "Webinar"
-                        ? "bg-blue-100 text-blue-700"
-                        : event.type === "Workshop"
-                        ? "bg-purple-100 text-purple-700"
-                        : "bg-amber-100 text-amber-700"
+            {filteredEvents.map((event) => {
+              const whatsappMessage = selectedTab === "upcoming"
+                ? `Hi! I'm interested in registering for the "${event.title}" event. Can you share more details?`
+                : `Hi! I'd like to know more about the "${event.title}" event.`;
+              const whatsappLink = `https://wa.me/919363932727?text=${encodeURIComponent(whatsappMessage)}`;
+              
+              return (
+                <div
+                  key={event.title}
+                  className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md"
+                >
+                  <div className="mb-3 flex items-center gap-2 text-xs">
+                    <span
+                      className={`rounded-full px-2 py-1 font-medium ${
+                        event.type === "Webinar"
+                          ? "bg-blue-100 text-blue-700"
+                          : event.type === "Workshop"
+                          ? "bg-purple-100 text-purple-700"
+                          : "bg-amber-100 text-amber-700"
+                      }`}
+                    >
+                      {event.type}
+                    </span>
+                    <span className="text-slate-500">• {event.mode}</span>
+                  </div>
+                  <h3 className="text-base font-semibold text-slate-900">
+                    {event.title}
+                  </h3>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-600">
+                    {event.description}
+                  </p>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`mt-6 w-full rounded-lg px-4 py-2.5 text-center text-sm font-semibold transition ${
+                      selectedTab === "upcoming"
+                        ? "bg-primary text-white hover:bg-primary-dark"
+                        : "border border-slate-300 text-slate-700 hover:bg-slate-50"
                     }`}
                   >
-                    {event.type}
-                  </span>
-                  <span className="text-slate-500">• {event.mode}</span>
+                    {selectedTab === "upcoming" ? "Register Now" : "View Highlights"}
+                  </a>
                 </div>
-                <h3 className="text-base font-semibold text-slate-900">
-                  {event.title}
-                </h3>
-                <div className="mt-3 space-y-1 text-xs text-slate-600">
-                  <p>📅 {event.date}</p>
-                  <p>🕐 {event.time}</p>
-                </div>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-600">
-                  {event.description}
-                </p>
-                {selectedTab === "upcoming" ? (
-                  <button className="mt-6 w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-dark">
-                    Register Now
-                  </button>
-                ) : (
-                  <button className="mt-6 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
-                    View Highlights
-                  </button>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </section>
@@ -268,7 +256,7 @@ export default function EventsPage() {
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://wa.me/919500795194"
+              href="https://wa.me/919363932727"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-green-700"

@@ -37,7 +37,7 @@ export default function Home() {
             </div>
             <div className="mt-6 flex flex-wrap gap-6 border-t border-slate-700 pt-6 text-sm text-slate-300">
               <div>
-                <p className="text-2xl font-bold text-white">500+</p>
+                <p className="text-2xl font-bold text-white">7000+</p>
                 <p>Students Enrolled</p>
               </div>
               <div>
@@ -59,45 +59,12 @@ export default function Home() {
                   </div>
                   <p className="text-lg font-semibold">Your learning journey starts here</p>
                   <p className="mt-2 text-sm text-slate-300">
-                    Join a community of learners, get 1:1 mentorship, work on real projects
+                    Join a thriving community of 7000+ students and 50+ mentors learning together, building together, and growing together.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* HOME: Inspired By Section */}
-      <section className="border-b border-slate-200 bg-slate-50/60 py-10 md:py-12">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <h2 className="text-center text-sm font-semibold uppercase tracking-wide text-slate-600">
-            Inspired by the best learning platforms
-          </h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {[
-              { name: "GUVI", description: "Industry-backed tech learning" },
-              { name: "Growth School", description: "Practical, skill-focused approach" },
-              { name: "Unstop", description: "Community & opportunity-driven" },
-            ].map((platform) => (
-              <div
-                key={platform.name}
-                className="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm"
-              >
-                <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-2xl">
-                  ✨
-                </div>
-                <p className="text-sm font-semibold text-slate-900">
-                  Inspired by {platform.name}
-                </p>
-                <p className="mt-1 text-xs text-slate-600">{platform.description}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-4 text-center text-xs text-slate-500">
-            We blend the best practices from top platforms to create a unique learning
-            experience for Indian students
-          </p>
         </div>
       </section>
 

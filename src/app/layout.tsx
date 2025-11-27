@@ -1,7 +1,10 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
+import { useState } from "react";
+import ContactModal from "@/components/ContactModal";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,12 +16,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-export const metadata: Metadata = {
-  title: "DatanerdzAI | Crafting tomorrow's success",
-  description:
-    "DatanerdzAI is an edtech company helping students and professionals master data, tech, and business skills through industry-ready courses, projects, and mentorship.",
-};
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -35,32 +32,44 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [contactModalOpen, setContactModalOpen] = useState(false);
+
   return (
     <html lang="en">
+      <head>
+        <title>Datanerdz AI | Crafting Tomorrow's Success</title>
+        <meta
+          name="description"
+          content="Datanerdz AI is an edtech company helping students and professionals master data, tech, and business skills through industry-ready courses, projects, and mentorship."
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface text-slate-900`}
       >
+        <ContactModal
+          isOpen={contactModalOpen}
+          onClose={() => setContactModalOpen(false)}
+        />
         <div className="min-h-screen flex flex-col">
-          <header className="border-b border-slate-200 bg-white/80 backdrop-blur">
-            <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4 md:px-6">
-              <Link href="/" className="flex items-center gap-3">
-                <div className="relative h-10 w-10 overflow-hidden rounded-xl bg-white">
-                  <Image
-                    src="/datanerdzai-logo.png"
-                    alt="DatanerdzAI logo"
-                    fill
-                    sizes="40px"
-                    className="object-contain"
-                    priority
-                  />
-                </div>
+          {/* Header */}
+          <header className="sticky top-0 z-50 border-b border-slate-200 bg-white shadow-sm">
+            <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+              {/* Logo */}
+              <Link href="/" className="flex flex-shrink-0 items-center gap-2">
+                <Image
+                  src="/datanerdzai-logo.png"
+                  alt="DatanerdzAI"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8"
+                />
                 <div className="flex flex-col">
-                  <span className="text-base font-semibold tracking-tight text-slate-900">
-                    DATANERDZ.AI
-                  </span>
-                  <span className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
-                    Crafting tomorrow's success
-                  </span>
+                  <div className="text-sm font-bold uppercase tracking-wide text-slate-900">
+                    Datanerdz.AI
+                  </div>
+                  <div className="text-[10px] font-medium uppercase tracking-[0.15em] text-primary">
+                    Crafting Tomorrow&apos;s Success
+                  </div>
                 </div>
               </Link>
               <nav className="hidden items-center gap-6 text-sm font-medium text-slate-700 md:flex">
@@ -74,12 +83,12 @@ export default function RootLayout({
                   </Link>
                 ))}
               </nav>
-              <Link
-                href="/contact"
-                className="hidden rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-dark md:inline-flex"
+              <button
+                onClick={() => setContactModalOpen(true)}
+                className="hidden rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-dark md:inline-flex"
               >
-                Talk to us
-              </Link>
+                Talk to Us
+              </button>
             </div>
           </header>
 
@@ -93,6 +102,7 @@ export default function RootLayout({
                 {/* Brand Section */}
                 <div className="md:col-span-2">
                   <p className="text-lg font-semibold tracking-tight">Datanerdz AI</p>
+                  <p className="text-xs text-slate-400">+91 9363932727</p>
                   <p className="mt-2 text-sm text-slate-400">
                     A student-first learning community helping college students and freshers master tech skills, get mentorship, and build successful careers.
                   </p>
@@ -105,12 +115,12 @@ export default function RootLayout({
                     </p>
                     <p className="text-slate-400">
                       <span className="font-medium text-white">Phone:</span>{" "}
-                      <a href="tel:+919500795194" className="hover:text-sky-300">
-                        +91 9500795194
+                      <a href="tel:+919363932727" className="hover:text-sky-300">
+                        +91 9363932727
                       </a>
                     </p>
                     <a
-                      href="https://wa.me/919500795194"
+                      href="https://wa.me/919363932727"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-full bg-green-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-green-700"

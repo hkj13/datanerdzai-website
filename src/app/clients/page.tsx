@@ -76,41 +76,6 @@ export default function ClientsPage() {
         </div>
       </section>
 
-      {/* CLIENTS: Placeholder Logos Section */}
-      <section className="border-y border-slate-200 bg-slate-50/60 py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-              Our Partners
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm text-slate-600 md:text-base">
-              Trusted by educational institutions and companies
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <div
-                key={i}
-                className="flex aspect-square items-center justify-center rounded-xl border border-dashed border-slate-300 bg-white p-4"
-              >
-                <span className="text-xs font-medium text-slate-400">Logo {i + 1}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center">
-            <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-              Coming Soon
-            </p>
-            <p className="mt-2 text-sm text-slate-600">
-              We're adding detailed case studies, client logos, and success stories.
-              Check back soon or contact us to learn more about our partnerships.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* CLIENTS: Sample Case Studies */}
       <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
         <div className="text-center">
@@ -293,10 +258,10 @@ export default function ClientsPage() {
               </a>
               <span className="text-slate-400">•</span>
               <a
-                href="tel:+919500795194"
+                href="tel:+919363932727"
                 className="font-medium text-primary hover:underline"
               >
-                +91 9500795194
+                +91 9363932727
               </a>
             </div>
           </div>
