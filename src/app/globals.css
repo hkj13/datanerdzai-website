@@ -3,8 +3,12 @@
 :root {
   --background: #f5f7fb;
   --foreground: #0f172a;
-  --primary: #0057c2;
-  --primary-dark: #00429a;
+  --primary: #0066FF;
+  --primary-dark: #0033CC;
+  --navy: #0A1628;
+  --blue-bright: #0066FF;
+  --cyan: #00CCFF;
+  --blue-light: #B3E5FC;
 }
 
 @theme inline {
@@ -187,9 +191,16 @@ textarea:-webkit-autofill:active {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Gradient text */
+/* Gradient text - Blue Theme */
 .gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background: linear-gradient(135deg, #0066FF 0%, #00CCFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-dark {
+  background: linear-gradient(135deg, #0033CC 0%, #0066FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -223,7 +234,7 @@ textarea:-webkit-autofill:active {
   transform: translateY(0);
 }
 
-/* Gradient borders */
+/* Gradient borders - Blue Theme */
 .gradient-border {
   position: relative;
   background: white;
@@ -235,22 +246,33 @@ textarea:-webkit-autofill:active {
   inset: 0;
   border-radius: inherit;
   padding: 2px;
-  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  background: linear-gradient(135deg, #0066FF, #00CCFF);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
 }
 
-/* Pulsing glow */
+/* Pulsing glow - Blue Theme */
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.4);
   }
   50% {
-    box-shadow: 0 0 40px rgba(102, 126, 234, 0.8), 0 0 60px rgba(118, 75, 162, 0.4);
+    box-shadow: 0 0 40px rgba(0, 102, 255, 0.6), 0 0 60px rgba(0, 204, 255, 0.3);
   }
 }
 
 .pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Blue gradient backgrounds */
+.bg-gradient-blue {
+  background: linear-gradient(135deg, #0066FF, #00CCFF);
+}
+
+.bg-gradient-blue-dark {
+  background: linear-gradient(135deg, #0A1628, #0033CC);
 }

@@ -1,35 +1,70 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About Us | Datanerdz AI",
-  description:
-    "Learn about Datanerdz AI - a student-first learning community helping college students master tech skills through mentorship, courses, and community support.",
-};
+import Link from "next/link";
+import { useEffect } from "react";
 
 export default function AboutPage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="bg-surface">
-      {/* ABOUT: Hero Section */}
-      <section className="border-b border-slate-200 bg-slate-900 py-12 text-white md:py-16">
-        <div className="mx-auto max-w-4xl px-4 text-center md:px-6">
-          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
-            About Datanerdz AI
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-200 md:text-lg">
-            A student-first learning community bridging the gap between college education
-            and real-world tech careers
-          </p>
+      {/* ABOUT: Hero Section with Video */}
+      <section className="relative min-h-[70vh] flex items-center border-b border-slate-200 overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/3209301-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-950/90 to-blue-900/85 z-[1]"></div>
+        
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center md:px-6 text-white">
+          <div className="animate-fade-in-up">
+            <div className="inline-block rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
+              🎓 Our Story
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
+              About <span className="gradient-text">Datanerdz AI</span>
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg md:text-xl text-slate-200 leading-relaxed">
+              A student-first learning community bridging the gap between college education
+              and real-world tech careers
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ABOUT: Our Story */}
-      <section className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
+      <section className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16 reveal">
         <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+          <div className="inline-block rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
+            💡 Our Journey
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
             Our Story
           </h2>
-          <div className="mx-auto mt-6 space-y-4 text-left text-sm leading-relaxed text-slate-700 md:text-base">
+          <div className="mx-auto mt-8 space-y-5 text-left text-base leading-relaxed text-slate-700">
             <p>
               Datanerdz AI was born from a simple observation: <strong>thousands of talented 
               students graduate every year, but many feel lost</strong> when it comes to building 
@@ -56,27 +91,27 @@ export default function AboutPage() {
       </section>
 
       {/* ABOUT: Mission & Vision */}
-      <section className="border-y border-slate-200 bg-slate-50/60 py-12 md:py-16">
+      <section className="border-y border-slate-200 bg-gradient-to-b from-white to-slate-50 py-16 md:py-20 reveal">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 text-2xl">
+            <div className="group rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-3xl shadow-lg">
                 🎯
               </div>
-              <h3 className="text-xl font-bold text-slate-900">Our Mission</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-700">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
+              <p className="text-base leading-relaxed text-slate-700">
                 To empower every Indian college student with the skills, mentorship, and 
                 community support they need to build successful tech careers—regardless of 
                 their background, branch, or starting point.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-2xl">
+            <div className="group rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-400 text-3xl shadow-lg">
                 🚀
               </div>
-              <h3 className="text-xl font-bold text-slate-900">Our Vision</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-700">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Vision</h3>
+              <p className="text-base leading-relaxed text-slate-700">
                 To become India's most trusted student learning community, where every 
                 learner has access to world-class education, personalized mentorship, and 
                 a network that accelerates their career growth.
@@ -87,12 +122,15 @@ export default function AboutPage() {
       </section>
 
       {/* ABOUT: How We Work */}
-      <section className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
+      <section className="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20 reveal">
         <div className="text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+          <div className="inline-block rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
+            ⚡ Our Process
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
             How We Work
           </h2>
-          <p className="mx-auto mt-3 text-sm text-slate-600 md:text-base">
+          <p className="mx-auto mt-4 text-lg text-slate-600 max-w-2xl">
             Your journey from confusion to clarity to career success
           </p>
         </div>

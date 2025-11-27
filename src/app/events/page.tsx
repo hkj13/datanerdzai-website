@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Event = {
   title: string;
@@ -80,18 +80,56 @@ const events: Event[] = [
 export default function EventsPage() {
   const [selectedTab, setSelectedTab] = useState<"upcoming" | "past">("upcoming");
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const filteredEvents = events.filter((event) => event.status === selectedTab);
 
   return (
     <div className="bg-surface">
-      {/* EVENTS: Hero Section */}
-      <section className="border-b border-slate-200 bg-slate-900 py-12 text-white md:py-16">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Events</h1>
-          <p className="mt-3 max-w-2xl text-sm text-slate-200 md:text-base">
-            Join our free webinars, workshops, hackathons, and community sessions.
-            Learn from experts, network with peers, and stay ahead in your tech journey.
-          </p>
+      {/* EVENTS: Hero Section with Video */}
+      <section className="relative min-h-[60vh] flex items-center border-b border-slate-200 overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/5197383-uhd_2160_3840_25fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-950/90 to-blue-900/85 z-[1]"></div>
+        
+        <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20 text-white">
+          <div className="animate-fade-in-up max-w-3xl">
+            <div className="inline-block rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
+              🎉 Community Events
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
+              Join Our <span className="gradient-text">Events</span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-200 leading-relaxed">
+              Join our free webinars, workshops, hackathons, and community sessions.
+              Learn from experts, network with peers, and stay ahead in your tech journey.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -128,7 +166,7 @@ export default function EventsPage() {
       </section>
 
       {/* EVENTS: Event Grid */}
-      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16 reveal">
         {filteredEvents.length === 0 ? (
           <div className="rounded-xl border border-slate-200 bg-white p-12 text-center shadow-sm">
             <p className="text-lg font-semibold text-slate-900">

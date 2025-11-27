@@ -38,7 +38,7 @@ export default function Home() {
         </video>
         
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-primary/70 z-[1]"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-950/85 to-blue-900/75 z-[1]"></div>
         
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-10 px-4 py-16 md:flex-row md:items-center md:justify-between md:px-6 md:py-20">
           <div className="max-w-xl space-y-6 animate-fade-in-up">
@@ -91,7 +91,7 @@ export default function Home() {
           <div className="w-full max-w-md animate-scale-in delay-200">
             <div className="glass-dark rounded-3xl p-8 transition-all hover:scale-105 pulse-glow">
               <div className="text-center">
-                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-purple-500 animate-float shadow-2xl">
+                <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 animate-float shadow-2xl">
                   <span className="text-4xl">🎓</span>
                 </div>
                 <p className="text-2xl font-bold mb-3">Your Learning Journey Starts Here</p>
@@ -100,15 +100,15 @@ export default function Home() {
                 </p>
                 <div className="mt-6 grid grid-cols-3 gap-4">
                   <div className="glass rounded-lg p-3">
-                    <p className="text-2xl font-bold text-sky-300">7K+</p>
+                    <p className="text-2xl font-bold text-cyan-400">7K+</p>
                     <p className="text-xs text-slate-400">Students</p>
                   </div>
                   <div className="glass rounded-lg p-3">
-                    <p className="text-2xl font-bold text-purple-300">50+</p>
+                    <p className="text-2xl font-bold text-blue-400">50+</p>
                     <p className="text-xs text-slate-400">Mentors</p>
                   </div>
                   <div className="glass rounded-lg p-3">
-                    <p className="text-2xl font-bold text-pink-300">20+</p>
+                    <p className="text-2xl font-bold text-sky-400">20+</p>
                     <p className="text-xs text-slate-400">Courses</p>
                   </div>
                 </div>
@@ -275,7 +275,7 @@ export default function Home() {
 
             {/* Content Side */}
             <div className="reveal order-1 lg:order-2 space-y-6">
-              <div className="inline-block rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white">
+              <div className="inline-block rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white">
                 💡 Learn Together
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
@@ -288,11 +288,11 @@ export default function Home() {
               
               <div className="grid grid-cols-2 gap-4 pt-4">
                 <div className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                  <p className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Live</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Live</p>
                   <p className="text-sm text-slate-600 mt-1">Interactive Sessions</p>
                 </div>
                 <div className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                  <p className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">24/7</p>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">24/7</p>
                   <p className="text-sm text-slate-600 mt-1">Mentor Support</p>
                 </div>
               </div>
@@ -300,13 +300,13 @@ export default function Home() {
               <div className="flex flex-wrap gap-3 pt-4">
                 <Link
                   href="/courses"
-                  className="rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:shadow-xl hover:scale-105"
+                  className="rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:shadow-xl hover:scale-105"
                 >
                   Explore Courses →
                 </Link>
                 <Link
                   href="/events"
-                  className="rounded-full border-2 border-slate-300 px-8 py-4 text-sm font-semibold text-slate-700 transition hover:border-purple-500 hover:text-purple-600"
+                  className="rounded-full border-2 border-slate-300 px-8 py-4 text-sm font-semibold text-slate-700 transition hover:border-blue-500 hover:text-blue-600"
                 >
                   Join Free Events
                 </Link>
@@ -402,7 +402,7 @@ export default function Home() {
           >
             <source src="/videos/2278095-hd_1920_1080_30fps.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-purple-900/90 to-slate-900/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-slate-900/95"></div>
         </div>
 
         <div className="relative z-10 mx-auto max-w-6xl px-4 md:px-6 text-center text-white">
@@ -425,7 +425,7 @@ export default function Home() {
                 { num: "₹8L", label: "Avg. Package" }
               ].map((stat, i) => (
                 <div key={i} className="glass-dark rounded-2xl p-6 animate-scale-in" style={{animationDelay: `${i * 0.1}s`}}>
-                  <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                  <p className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
                     {stat.num}
                   </p>
                   <p className="text-sm text-slate-400">{stat.label}</p>
@@ -435,7 +435,7 @@ export default function Home() {
 
             <Link
               href="/courses"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-purple-600 px-10 py-5 text-lg font-semibold text-white shadow-2xl transition hover:scale-105 hover:shadow-purple-500/50"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 px-10 py-5 text-lg font-semibold text-white shadow-2xl transition hover:scale-105 hover:shadow-blue-500/50"
             >
               Start Your Journey
               <span className="text-2xl">→</span>
@@ -509,7 +509,7 @@ export default function Home() {
       {/* HOME: Community & Testimonials */}
       <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16 reveal">
         <div className="text-center">
-          <div className="inline-block rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
+          <div className="inline-block rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
             ⭐ Student Success Stories
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -561,7 +561,7 @@ export default function Home() {
                 "{testimonial.content}"
               </p>
               <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-purple-400 to-pink-400 text-2xl">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 text-2xl">
                   {testimonial.avatar}
                 </div>
                 <div>
@@ -590,7 +590,7 @@ export default function Home() {
         </video>
         
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-purple-900/85 to-slate-900/90 z-[1]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-900/85 to-slate-900/90 z-[1]"></div>
         
         <div className="relative z-10 mx-auto max-w-5xl px-4 py-20 text-center md:px-6 text-white">
           <div className="reveal">
@@ -608,7 +608,7 @@ export default function Home() {
                 className="group relative overflow-hidden rounded-full bg-white px-10 py-5 text-base font-semibold text-slate-900 shadow-2xl transition hover:scale-105"
               >
                 <span className="relative z-10">Join as Student</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-purple-500 opacity-0 transition group-hover:opacity-100"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 transition group-hover:opacity-100"></div>
               </Link>
               <Link
                 href="/join-mentor"

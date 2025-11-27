@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import CourseModal from "@/components/CourseModal";
 
@@ -128,6 +128,23 @@ export default function CoursesPage() {
   const [selectedCategory, setSelectedCategory] = useState("All Courses");
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const filteredCourses =
     selectedCategory === "All Courses"
       ? courses
@@ -140,16 +157,35 @@ export default function CoursesPage() {
         onClose={() => setSelectedCourse(null)}
       />
       <div className="bg-surface">
-      {/* COURSES: Hero Section */}
-      <section className="border-b border-slate-200 bg-slate-900 py-12 text-white md:py-16">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Courses We Offer
-          </h1>
-          <p className="mt-3 max-w-2xl text-sm text-slate-200 md:text-base">
-            Structured, hands-on courses designed to take you from beginner to
-            job-ready. Learn with live sessions, build real projects, get mentored.
-          </p>
+      {/* COURSES: Hero Section with Video */}
+      <section className="relative min-h-[60vh] flex items-center border-b border-slate-200 overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/3256766-uhd_2160_3840_25fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-950/90 to-blue-900/85 z-[1]"></div>
+        
+        <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20 text-white">
+          <div className="animate-fade-in-up max-w-3xl">
+            <div className="inline-block rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
+              📚 Learn & Grow
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
+              Courses We <span className="gradient-text">Offer</span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-200 leading-relaxed">
+              Structured, hands-on courses designed to take you from beginner to
+              job-ready. Learn with live sessions, build real projects, get mentored.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -178,15 +214,20 @@ export default function CoursesPage() {
       </section>
 
       {/* COURSES: Course Grid */}
-      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
+      <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16 reveal">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredCourses.map((course) => (
+          {filteredCourses.map((course, index) => (
             <div
               key={course.title}
-              className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md"
+              className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2 reveal"
+              style={{transitionDelay: `${index * 0.05}s`}}
             >
               <div className="mb-3 flex items-center gap-2 text-xs">
-                <span className="rounded-full bg-green-100 px-2 py-1 font-medium text-green-700">
+                <span className={`rounded-full px-2 py-1 font-medium ${
+                  course.level === 'Beginner' ? 'bg-cyan-100 text-cyan-700' :
+                  course.level === 'Intermediate' ? 'bg-blue-100 text-blue-700' :
+                  'bg-indigo-100 text-indigo-700'
+                }`}>
                   {course.level}
                 </span>
                 <span className="text-slate-500">• {course.duration}</span>
