@@ -384,10 +384,10 @@ export default function JoinStudentPage() {
             <p className="mt-2 text-sm text-slate-600">
               WhatsApp us at{" "}
               <a
-                href="https://wa.me/919363932727"
+                href="https://wa.me/919360393272"
                 className="font-semibold text-primary hover:underline"
               >
-                +91 9363932727
+                +91 9360393272
               </a>{" "}
               or email{" "}
               <a

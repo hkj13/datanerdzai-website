@@ -258,10 +258,10 @@ export default function ClientsPage() {
               </a>
               <span className="text-slate-400">•</span>
               <a
-                href="tel:+919363932727"
+                href="tel:+919360393272"
                 className="font-medium text-primary hover:underline"
               >
-                +91 9363932727
+                +91 9360393272
               </a>
             </div>
           </div>

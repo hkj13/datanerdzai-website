@@ -204,7 +204,7 @@ ${data.message}
             </p>
             <div className="mt-2 flex flex-wrap items-center justify-center gap-3 text-sm">
               <a
-                href="https://wa.me/919363932727"
+                href="https://wa.me/919360393272"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 font-medium text-green-600 hover:underline"
@@ -220,7 +220,7 @@ ${data.message}
               </a>
               <span className="text-slate-300">•</span>
               <a
-                href="tel:+919363932727"
+                href="tel:+919360393272"
                 className="font-medium text-primary hover:underline"
               >
                 Call

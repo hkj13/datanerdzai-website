@@ -144,7 +144,7 @@ export default function EventsPage() {
               const whatsappMessage = selectedTab === "upcoming"
                 ? `Hi! I'm interested in registering for the "${event.title}" event. Can you share more details?`
                 : `Hi! I'd like to know more about the "${event.title}" event.`;
-              const whatsappLink = `https://wa.me/919363932727?text=${encodeURIComponent(whatsappMessage)}`;
+              const whatsappLink = `https://wa.me/919360393272?text=${encodeURIComponent(whatsappMessage)}`;
               
               return (
                 <div
@@ -256,7 +256,7 @@ export default function EventsPage() {
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://wa.me/919363932727"
+              href="https://wa.me/919360393272"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-green-700"

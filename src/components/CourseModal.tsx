@@ -117,7 +117,7 @@ export default function CourseModal({ course, onClose }: CourseModalProps) {
   ];
 
   const whatsappMessage = `Hi! I'm interested in the "${course.title}" course. Can you share more details about batch timings, fees, and enrollment?`;
-  const whatsappLink = `https://wa.me/919363932727?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappLink = `https://wa.me/919360393272?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">

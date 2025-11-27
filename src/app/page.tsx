@@ -4,14 +4,14 @@ export default function Home() {
   return (
     <div className="bg-surface">
       {/* HOME: Hero Section */}
-      <section className="border-b border-slate-200 bg-gradient-to-br from-slate-900 via-slate-900 to-primary text-white">
+      <section className="border-b border-slate-200 bg-gradient-to-br from-slate-900 via-slate-900 to-primary text-white overflow-hidden">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-10 px-4 py-16 md:flex-row md:items-center md:justify-between md:px-6 md:py-20">
-          <div className="max-w-xl space-y-6">
+          <div className="max-w-xl space-y-6 animate-fade-in-up">
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               Learn. Build. Grow.{" "}
               <span className="text-sky-300">Together</span> with Datanerdz AI
             </h1>
-            <p className="text-balance text-base leading-relaxed text-slate-200 sm:text-lg">
+            <p className="text-balance text-base leading-relaxed text-slate-200 sm:text-lg delay-100">
               A student-first learning community helping college students and freshers 
               master tech skills, get mentorship, and build successful careers.
             </p>
@@ -50,11 +50,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-full max-w-md">
-            <div className="rounded-2xl bg-white/10 p-1 backdrop-blur">
+          <div className="w-full max-w-md animate-scale-in delay-200">
+            <div className="rounded-2xl bg-white/10 p-1 backdrop-blur transition-transform hover:scale-105">
               <div className="rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 p-6">
                 <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-sky-500/20">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-sky-500/20 animate-pulse">
                     <span className="text-3xl">🎓</span>
                   </div>
                   <p className="text-lg font-semibold">Your learning journey starts here</p>
@@ -83,33 +83,33 @@ export default function Home() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              icon: "📚",
-              title: "Skill-Based Courses",
-              description:
-                "Learn Data Science, Web Dev, App Dev, AI/ML through structured, hands-on courses",
-            },
-            {
-              icon: "👥",
-              title: "1:1 & Group Mentorship",
-              description:
-                "Get personalized guidance from industry experts and working professionals",
-            },
-            {
               icon: "🎯",
-              title: "Community & Events",
+              title: "Industry-Relevant Courses",
               description:
-                "Join webinars, workshops, hackathons and connect with peers across India",
+                "Learn practical skills that companies actually look for. Updated curriculum, live projects, and certifications.",
+            },
+            {
+              icon: "👨‍🏫",
+              title: "Expert Mentors",
+              description:
+                "Get guidance from professionals working in top companies. 1:1 doubt sessions and career advice.",
+            },
+            {
+              icon: "🤝",
+              title: "Community Learning",
+              description:
+                "Connect with peers, work on group projects, participate in hackathons, and grow your network.",
             },
             {
               icon: "💼",
               title: "Career Support",
               description:
-                "Resume building, interview prep, project guidance to land your dream job",
+                "Resume building, mock interviews, LinkedIn optimization, and referral opportunities to land your dream job.",
             },
-          ].map((item) => (
+          ].map((item, index) => (
             <div
               key={item.title}
-              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md"
+              className={`rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 animate-fade-in-up delay-${index * 100 + 100}`}
             >
               <div className="text-4xl">{item.icon}</div>
               <h3 className="mt-4 text-base font-semibold text-slate-900">
@@ -233,10 +233,10 @@ export default function Home() {
               duration: "10 weeks",
               format: "Live + Recorded",
             },
-          ].map((course) => (
+          ].map((course, index) => (
             <div
               key={course.title}
-              className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md"
+              className={`flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2 animate-scale-in delay-${index * 100 + 100}`}
             >
               <div className="mb-3 inline-flex items-center gap-2 text-xs">
                 <span className="rounded-full bg-green-100 px-2 py-1 font-medium text-green-700">
@@ -288,29 +288,26 @@ export default function Home() {
             {[
               {
                 title: "Career in Data Science - Roadmap for Students",
-                date: "Dec 5, 2025",
-                time: "7:00 PM IST",
                 type: "Webinar",
                 mode: "Online",
+                description: "Learn about skills, certifications, projects, and job opportunities in Data Science",
               },
               {
                 title: "Build Your First ML Model Workshop",
-                date: "Dec 10, 2025",
-                time: "6:00 PM IST",
                 type: "Workshop",
                 mode: "Online",
+                description: "Hands-on workshop to build and deploy your first ML model with Python",
               },
               {
                 title: "Resume Building & LinkedIn Optimization",
-                date: "Dec 15, 2025",
-                time: "8:00 PM IST",
                 type: "Workshop",
                 mode: "Online",
+                description: "Craft ATS-friendly resumes and optimize your LinkedIn profile",
               },
-            ].map((event) => (
+            ].map((event, index) => (
               <div
                 key={event.title}
-                className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md"
+                className={`rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 animate-fade-in delay-${index * 100 + 100}`}
               >
                 <div className="mb-3 flex items-center gap-2 text-xs">
                   <span className="rounded-full bg-blue-100 px-2 py-1 font-medium text-blue-700">
@@ -319,10 +316,7 @@ export default function Home() {
                   <span className="text-slate-500">• {event.mode}</span>
                 </div>
                 <h3 className="text-sm font-semibold text-slate-900">{event.title}</h3>
-                <div className="mt-3 space-y-1 text-xs text-slate-600">
-                  <p>📅 {event.date}</p>
-                  <p>🕐 {event.time}</p>
-                </div>
+                <p className="mt-3 text-xs leading-relaxed text-slate-600">{event.description}</p>
                 <button className="mt-4 w-full rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-white transition hover:bg-primary-dark">
                   Register Now
                 </button>

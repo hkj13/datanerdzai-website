@@ -284,7 +284,7 @@ export default function CoursesPage() {
               Join as Student
             </Link>
             <a
-              href="https://wa.me/919363932727"
+              href="https://wa.me/919360393272"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-green-700"

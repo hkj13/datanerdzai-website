@@ -42,6 +42,8 @@ export default function RootLayout({
           name="description"
           content="Datanerdz AI is an edtech company helping students and professionals master data, tech, and business skills through industry-ready courses, projects, and mentorship."
         />
+        <link rel="icon" href="/datanerdzai-logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/datanerdzai-logo.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface text-slate-900`}
@@ -102,7 +104,7 @@ export default function RootLayout({
                 {/* Brand Section */}
                 <div className="md:col-span-2">
                   <p className="text-lg font-semibold tracking-tight">Datanerdz AI</p>
-                  <p className="text-xs text-slate-400">+91 9363932727</p>
+                  <p className="text-xs text-slate-400">+91 9360393272</p>
                   <p className="mt-2 text-sm text-slate-400">
                     A student-first learning community helping college students and freshers master tech skills, get mentorship, and build successful careers.
                   </p>
@@ -115,12 +117,12 @@ export default function RootLayout({
                     </p>
                     <p className="text-slate-400">
                       <span className="font-medium text-white">Phone:</span>{" "}
-                      <a href="tel:+919363932727" className="hover:text-sky-300">
-                        +91 9363932727
+                      <a href="tel:+919360393272" className="hover:text-sky-300">
+                        +91 9360393272
                       </a>
                     </p>
                     <a
-                      href="https://wa.me/919363932727"
+                      href="https://wa.me/919360393272"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-full bg-green-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-green-700"
