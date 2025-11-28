@@ -25,7 +25,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: 'Datanerdz AI <onboarding@resend.dev>',
-      to: ['hkhemanth1324@gmail.com', 'datanerdzai@gmail.com'], // Both verified emails receive submissions
+      to: 'hkhemanth1324@gmail.com', // Only verified email for now
       replyTo: 'shanthinishanu24@gmail.com', // Reply goes to this email
       subject: subject,
       html: `
