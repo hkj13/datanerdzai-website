@@ -629,15 +629,15 @@ export default function Home() {
             {/* Trust Indicators */}
             <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-slate-400">
               <div className="flex items-center gap-2">
-                <span className="text-2xl">✓</span>
+                <CheckCircle className="w-5 h-5 text-cyan-400" />
                 <span>Industry-Recognized Courses</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-2xl">✓</span>
+                <CheckCircle className="w-5 h-5 text-cyan-400" />
                 <span>Lifetime Access</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-2xl">✓</span>
+                <CheckCircle className="w-5 h-5 text-cyan-400" />
                 <span>Job Assistance</span>
               </div>
             </div>

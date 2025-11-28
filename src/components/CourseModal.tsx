@@ -129,7 +129,7 @@ export default function CourseModal({ course, onClose }: CourseModalProps) {
             <div className="flex-1">
               <h2 className="text-xl font-bold text-slate-900">{course.title}</h2>
               <div className="mt-2 flex flex-wrap items-center gap-3 text-xs">
-                <span className="rounded-full bg-green-100 px-2 py-1 font-medium text-green-700">
+                <span className="rounded-full bg-blue-100 px-2 py-1 font-medium text-blue-700">
                   {course.level}
                 </span>
                 <span className="text-slate-600">Duration: {course.duration}</span>
@@ -172,7 +172,7 @@ export default function CourseModal({ course, onClose }: CourseModalProps) {
             <ul className="mt-3 space-y-2">
               {content.map((item, index) => (
                 <li key={index} className="flex gap-3 text-sm text-slate-700">
-                  <CheckCircle className="mt-0.5 flex-shrink-0 w-4 h-4 text-green-600" />
+                  <CheckCircle className="mt-0.5 flex-shrink-0 w-4 h-4 text-blue-600" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -213,7 +213,7 @@ export default function CourseModal({ course, onClose }: CourseModalProps) {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-lg bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-green-700"
+              className="flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-dark"
             >
               <span>Apply / Enquire</span>
               <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import CourseModal from "@/components/CourseModal";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Video, Laptop, Target, MessageCircle } from "lucide-react";
 
 type Course = {
   title: string;
@@ -274,31 +274,35 @@ export default function CoursesPage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: "📹",
+                icon: Video,
                 title: "Live & Recorded Sessions",
                 description: "Join live classes or watch recordings at your own pace",
               },
               {
-                icon: "💻",
+                icon: Laptop,
                 title: "Hands-On Assignments",
                 description: "Practice with real tasks after every module",
               },
               {
-                icon: "🎯",
+                icon: Target,
                 title: "Capstone Projects",
                 description: "Build portfolio-ready projects with mentor guidance",
               },
               {
-                icon: "💬",
+                icon: MessageCircle,
                 title: "Doubt Support",
                 description: "Get your questions answered on WhatsApp/Slack instantly",
               },
             ].map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm"
+                className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:shadow-md hover:-translate-y-1"
               >
-                <div className="text-3xl">{item.icon}</div>
+                <div className="flex justify-center mb-2">
+                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-white" />
+                  </div>
+                </div>
                 <h3 className="mt-3 text-sm font-semibold text-slate-900">
                   {item.title}
                 </h3>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, GraduationCap, Users, Lightbulb, Gift } from "lucide-react";
 
 type Event = {
   title: string;
@@ -245,25 +245,25 @@ export default function EventsPage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: "🎓",
+                icon: GraduationCap,
                 title: "Learn from Experts",
                 description:
                   "Get insights from industry professionals and experienced mentors",
               },
               {
-                icon: "🤝",
+                icon: Users,
                 title: "Network with Peers",
                 description:
                   "Connect with fellow students and learners from across India",
               },
               {
-                icon: "💡",
+                icon: Lightbulb,
                 title: "Practical Knowledge",
                 description:
                   "Hands-on workshops with real projects and actionable tips",
               },
               {
-                icon: "🎁",
+                icon: Gift,
                 title: "Free Resources",
                 description:
                   "Get templates, guides, certificates, and exclusive materials",
@@ -271,9 +271,13 @@ export default function EventsPage() {
             ].map((benefit) => (
               <div
                 key={benefit.title}
-                className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm"
+                className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:shadow-md hover:-translate-y-1"
               >
-                <div className="text-3xl">{benefit.icon}</div>
+                <div className="flex justify-center mb-2">
+                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                    <benefit.icon className="w-6 h-6 text-white" />
+                  </div>
+                </div>
                 <h3 className="mt-3 text-sm font-semibold text-slate-900">
                   {benefit.title}
                 </h3>
