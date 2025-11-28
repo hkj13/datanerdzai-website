@@ -37,31 +37,33 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       email: formData.get("email"),
       phone: formData.get("phone"),
       message: formData.get("message"),
+      formType: "contact"
     };
 
-    // Create email content
-    const emailBody = `
-New Contact Form Submission - Datanerdz AI
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-
-Message:
-${data.message}
-    `.trim();
-
-    // Open mailto link (temporary solution until email service is set up)
-    const mailtoLink = `mailto:contact@datanerdzai.com?subject=New Contact Form Submission&body=${encodeURIComponent(emailBody)}`;
-    window.open(mailtoLink, "_blank");
+      if (response.ok) {
+        setSubmitted(true);
+        // Close after 2 seconds
+        setTimeout(() => {
+          onClose();
+        }, 2000);
+      } else {
+        alert('Failed to send message. Please try again or contact us directly.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to send message. Please try again or contact us directly.');
+    }
 
     setIsSubmitting(false);
-    setSubmitted(true);
-
-    // Close after 2 seconds
-    setTimeout(() => {
-      onClose();
-    }, 2000);
   };
 
   if (!isOpen) return null;
