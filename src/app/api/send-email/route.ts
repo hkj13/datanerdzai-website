@@ -5,7 +5,11 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
+    console.log('API Route called - checking API key:', process.env.RESEND_API_KEY ? 'Key exists' : 'Key missing');
+    
     const { name, email, phone, message, formType } = await request.json();
+    
+    console.log('Form data received:', { name, email, phone, formType });
 
     // Determine subject based on form type
     let subject = 'New Contact Form Submission - Datanerdz AI';
@@ -17,9 +21,11 @@ export async function POST(request: Request) {
       subject = 'New Client Enquiry - Datanerdz AI';
     }
 
+    console.log('Attempting to send email with subject:', subject);
+
     const { data, error } = await resend.emails.send({
       from: 'Datanerdz AI <onboarding@resend.dev>',
-      to: 'hkhemanth324@gmail.com', // Your Resend verified email
+      to: 'hkhemanth1324@gmail.com', // Your Resend verified email (note: hkhemanth1324 not 324)
       subject: subject,
       html: `
         <!DOCTYPE html>
@@ -65,13 +71,17 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      console.error('Resend API error:', error);
+      return NextResponse.json({ error: error.message || 'Failed to send email' }, { status: 500 });
     }
 
+    console.log('Email sent successfully:', data);
     return NextResponse.json({ success: true, data });
-  } catch (error) {
-    console.error('API error:', error);
-    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+  } catch (error: any) {
+    console.error('API route error:', error);
+    return NextResponse.json({ 
+      error: 'Failed to send email', 
+      details: error.message 
+    }, { status: 500 });
   }
 }
