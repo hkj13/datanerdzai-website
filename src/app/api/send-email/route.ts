@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await resend.emails.send({
       from: 'Datanerdz AI <onboarding@resend.dev>',
-      to: 'contact@datanerdzai.com',
+      to: 'hkhemanth324@gmail.com', // Your Resend verified email
       subject: subject,
       html: `
         <!DOCTYPE html>

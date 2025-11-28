@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { CheckCircle, Video, Laptop, Target, MessageCircle } from "lucide-react";
 
 type CourseModalProps = {
   course: {
@@ -171,7 +172,7 @@ export default function CourseModal({ course, onClose }: CourseModalProps) {
             <ul className="mt-3 space-y-2">
               {content.map((item, index) => (
                 <li key={index} className="flex gap-3 text-sm text-slate-700">
-                  <span className="mt-0.5 flex-shrink-0 text-green-600">✓</span>
+                  <CheckCircle className="mt-0.5 flex-shrink-0 w-4 h-4 text-green-600" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -182,19 +183,19 @@ export default function CourseModal({ course, onClose }: CourseModalProps) {
             <h4 className="text-sm font-semibold text-slate-900">Course Format</h4>
             <div className="mt-3 grid gap-3 sm:grid-cols-2 text-xs">
               <div className="flex items-center gap-2">
-                <span>📹</span>
+                <Video className="w-4 h-4 text-blue-600" />
                 <span className="text-slate-700">Live & Recorded Sessions</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>💻</span>
+                <Laptop className="w-4 h-4 text-blue-600" />
                 <span className="text-slate-700">Hands-on Assignments</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>🎯</span>
+                <Target className="w-4 h-4 text-blue-600" />
                 <span className="text-slate-700">Real-world Projects</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>💬</span>
+                <MessageCircle className="w-4 h-4 text-blue-600" />
                 <span className="text-slate-700">Doubt Support</span>
               </div>
             </div>
