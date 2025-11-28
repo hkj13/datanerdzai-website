@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Calendar } from "lucide-react";
 
 type Event = {
   title: string;
@@ -119,8 +120,9 @@ export default function EventsPage() {
         
         <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20 text-white">
           <div className="animate-fade-in-up max-w-3xl">
-            <div className="inline-block rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
-              🎉 Community Events
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
+              <Calendar className="w-3.5 h-3.5" />
+              Community Events
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
               Join Our <span className="gradient-text">Events</span>

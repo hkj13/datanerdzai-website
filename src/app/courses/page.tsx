@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import CourseModal from "@/components/CourseModal";
+import { BookOpen } from "lucide-react";
 
 type Course = {
   title: string;
@@ -175,8 +176,9 @@ export default function CoursesPage() {
         
         <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20 text-white">
           <div className="animate-fade-in-up max-w-3xl">
-            <div className="inline-block rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
-              📚 Learn & Grow
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
+              <BookOpen className="w-3.5 h-3.5" />
+              Learn & Grow
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
               Courses We <span className="gradient-text">Offer</span>

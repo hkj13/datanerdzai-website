@@ -42,8 +42,10 @@ export default function RootLayout({
           name="description"
           content="Datanerdz AI is an edtech company helping students and professionals master data, tech, and business skills through industry-ready courses, projects, and mentorship."
         />
-        <link rel="icon" href="/datanerdzai-logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/datanerdzai-logo.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/datanerdzai-logo.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/datanerdzai-logo.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/datanerdzai-logo.png" />
+        <link rel="shortcut icon" href="/datanerdzai-logo.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface text-slate-900`}

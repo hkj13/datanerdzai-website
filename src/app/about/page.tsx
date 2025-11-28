@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { GraduationCap, Lightbulb, Target, Rocket, Search, BookOpen, Wrench, Users, TrendingUp, Handshake, Zap, Award, BarChart } from "lucide-react";
 
 export default function AboutPage() {
   useEffect(() => {
@@ -41,8 +42,9 @@ export default function AboutPage() {
         
         <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center md:px-6 text-white">
           <div className="animate-fade-in-up">
-            <div className="inline-block rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
-              🎓 Our Story
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
+              <GraduationCap className="w-3.5 h-3.5" />
+              Our Story
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
               About <span className="gradient-text">Datanerdz AI</span>
@@ -58,8 +60,9 @@ export default function AboutPage() {
       {/* ABOUT: Our Story */}
       <section className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16 reveal">
         <div className="text-center">
-          <div className="inline-block rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
-            💡 Our Journey
+          <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
+            <Lightbulb className="w-3.5 h-3.5" />
+            Our Journey
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
             Our Story
@@ -95,8 +98,8 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="grid gap-8 md:grid-cols-2">
             <div className="group rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 text-3xl shadow-lg">
-                🎯
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 shadow-lg">
+                <Target className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
               <p className="text-base leading-relaxed text-slate-700">
@@ -107,8 +110,8 @@ export default function AboutPage() {
             </div>
 
             <div className="group rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-xl hover:-translate-y-2">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-400 text-3xl shadow-lg">
-                🚀
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-blue-400 shadow-lg">
+                <Rocket className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Vision</h3>
               <p className="text-base leading-relaxed text-slate-700">
@@ -124,8 +127,9 @@ export default function AboutPage() {
       {/* ABOUT: How We Work */}
       <section className="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20 reveal">
         <div className="text-center">
-          <div className="inline-block rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
-            ⚡ Our Process
+          <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
+            <Zap className="w-3.5 h-3.5" />
+            Our Process
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
             How We Work
@@ -142,50 +146,50 @@ export default function AboutPage() {
               title: "Discover",
               description:
                 "Understand your goals, assess your current skill level, and get clarity on which path suits you best—Data, Web, App, AI/ML, or Career Skills.",
-              icon: "🔍",
+              icon: Search,
             },
             {
               step: "2",
               title: "Learn",
               description:
                 "Join structured courses designed for beginners. Learn through live sessions, recorded content, assignments, and real-world examples.",
-              icon: "📚",
+              icon: BookOpen,
             },
             {
               step: "3",
               title: "Build",
               description:
                 "Work on hands-on projects, capstones, and case studies. Build a portfolio that showcases your skills to potential employers.",
-              icon: "🛠️",
+              icon: Wrench,
             },
             {
               step: "4",
               title: "Get Mentored",
               description:
                 "Connect with experienced mentors for 1:1 doubt-clearing, career guidance, resume reviews, and mock interviews.",
-              icon: "👨‍🏫",
+              icon: Users,
             },
             {
               step: "5",
               title: "Grow Career",
               description:
                 "Apply to opportunities, get referrals through our network, ace interviews, and land your dream job or internship.",
-              icon: "💼",
+              icon: TrendingUp,
             },
           ].map((phase) => (
             <div
               key={phase.step}
-              className="flex gap-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+              className="flex gap-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg"
             >
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-lg font-bold text-primary">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-cyan-100 text-lg font-bold text-blue-600">
                   {phase.step}
                 </div>
               </div>
               <div>
                 <div className="flex items-center gap-3">
                   <h3 className="text-lg font-semibold text-slate-900">{phase.title}</h3>
-                  <span className="text-2xl">{phase.icon}</span>
+                  <phase.icon className="w-5 h-5 text-blue-600" />
                 </div>
                 <p className="mt-2 text-sm text-slate-600">{phase.description}</p>
               </div>
@@ -198,8 +202,9 @@ export default function AboutPage() {
       <section className="border-y border-slate-200 bg-gradient-to-b from-slate-50 to-white py-16 md:py-20 reveal">
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <div className="text-center">
-            <div className="inline-block rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
-              ⭐ Our Principles
+            <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
+              <Award className="w-3.5 h-3.5" />
+              Our Principles
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
               Our Values
@@ -212,22 +217,22 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: "🤝",
+                icon: Handshake,
                 title: "Community",
                 description: "We believe in learning together, not alone",
               },
               {
-                icon: "💡",
+                icon: Lightbulb,
                 title: "Clarity",
                 description: "We remove confusion and provide clear, actionable paths",
               },
               {
-                icon: "🔄",
+                icon: Zap,
                 title: "Consistency",
                 description: "We show up for our students, every single day",
               },
               {
-                icon: "📈",
+                icon: BarChart,
                 title: "Growth",
                 description: "We're obsessed with helping you grow, personally and professionally",
               },
@@ -237,7 +242,11 @@ export default function AboutPage() {
                 className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all hover:shadow-xl hover:-translate-y-2"
                 style={{transitionDelay: `${i * 0.1}s`}}
               >
-                <div className="text-5xl mb-4 transition-transform group-hover:scale-110">{value.icon}</div>
+                <div className="flex justify-center mb-4">
+                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center transition-transform group-hover:scale-110">
+                    <value.icon className="w-8 h-8 text-white" />
+                  </div>
+                </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">
                   {value.title}
                 </h3>

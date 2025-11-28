@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { Rocket, GraduationCap, Users, BookOpen, Target, Award, TrendingUp, Calendar, ArrowRight, Sparkles, Lightbulb, Zap, UserCheck, Handshake, Briefcase, Sprout, Wrench, FileText, DollarSign, CheckCircle, Star } from "lucide-react";
 
 export default function Home() {
   useEffect(() => {
@@ -42,8 +43,9 @@ export default function Home() {
         
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-10 px-4 py-16 md:flex-row md:items-center md:justify-between md:px-6 md:py-20">
           <div className="max-w-xl space-y-6 animate-fade-in-up">
-            <div className="inline-block rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-sky-300 mb-4">
-              🚀 Crafting Tomorrow's Success
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-sky-300 mb-4">
+              <Rocket className="w-3.5 h-3.5" />
+              Crafting Tomorrow's Success
             </div>
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl leading-tight">
               Learn. Build. Grow.{" "}
@@ -92,7 +94,7 @@ export default function Home() {
             <div className="glass-dark rounded-3xl p-8 transition-all hover:scale-105 pulse-glow">
               <div className="text-center">
                 <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 animate-float shadow-2xl">
-                  <span className="text-4xl">🎓</span>
+                  <GraduationCap className="w-10 h-10 text-white" />
                 </div>
                 <p className="text-2xl font-bold mb-3">Your Learning Journey Starts Here</p>
                 <p className="text-base text-slate-300 leading-relaxed">
@@ -133,25 +135,25 @@ export default function Home() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              icon: "🎯",
+              icon: Target,
               title: "Industry-Relevant Courses",
               description:
                 "Learn practical skills that companies actually look for. Updated curriculum, live projects, and certifications.",
             },
             {
-              icon: "👨‍🏫",
+              icon: UserCheck,
               title: "Expert Mentors",
               description:
                 "Get guidance from professionals working in top companies. 1:1 doubt sessions and career advice.",
             },
             {
-              icon: "🤝",
+              icon: Handshake,
               title: "Community Learning",
               description:
                 "Connect with peers, work on group projects, participate in hackathons, and grow your network.",
             },
             {
-              icon: "💼",
+              icon: Briefcase,
               title: "Career Support",
               description:
                 "Resume building, mock interviews, LinkedIn optimization, and referral opportunities to land your dream job.",
@@ -161,7 +163,11 @@ export default function Home() {
               key={item.title}
               className={`rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 animate-fade-in-up delay-${index * 100 + 100}`}
             >
-              <div className="text-4xl">{item.icon}</div>
+              <div className="flex justify-center mb-4">
+                <div className="h-14 w-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                  <item.icon className="w-7 h-7 text-white" />
+                </div>
+              </div>
               <h3 className="mt-4 text-base font-semibold text-slate-900">
                 {item.title}
               </h3>
@@ -188,37 +194,37 @@ export default function Home() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                icon: "🌱",
+                icon: Sprout,
                 title: "Beginner-Friendly",
                 description:
                   "Start from zero. Our courses assume no prior experience and build step-by-step",
               },
               {
-                icon: "⚡",
+                icon: Zap,
                 title: "Real-Time Mentor Support",
                 description:
                   "Stuck? Get instant doubt-clearing from mentors on WhatsApp/Slack",
               },
               {
-                icon: "🤝",
+                icon: Users,
                 title: "Community-Driven",
                 description:
                   "Learn with peers, share projects, collaborate on assignments",
               },
               {
-                icon: "🛠️",
+                icon: Wrench,
                 title: "Practical Projects",
                 description:
                   "Build real dashboards, apps, ML models—portfolio-ready work",
               },
               {
-                icon: "📝",
+                icon: FileText,
                 title: "Resume & Interview Prep",
                 description:
                   "Get your resume reviewed, practice mock interviews, improve communication",
               },
               {
-                icon: "💰",
+                icon: DollarSign,
                 title: "Affordable & Flexible",
                 description:
                   "Student-friendly pricing, EMI options, weekend/evening batches",
@@ -226,9 +232,11 @@ export default function Home() {
             ].map((feature) => (
               <div
                 key={feature.title}
-                className="flex gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+                className="flex gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:shadow-lg"
               >
-                <div className="text-3xl">{feature.icon}</div>
+                <div className="flex-shrink-0 h-12 w-12 rounded-lg bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
+                  <feature.icon className="w-6 h-6 text-blue-600" />
+                </div>
                 <div>
                   <h3 className="text-sm font-semibold text-slate-900">
                     {feature.title}
@@ -262,8 +270,8 @@ export default function Home() {
               {/* Floating badge */}
               <div className="absolute -top-4 -left-4 glass-dark rounded-2xl p-4 shadow-xl animate-float">
                 <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-2xl">
-                    ✓
+                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="text-sm font-bold text-white">Live Sessions</p>
@@ -275,8 +283,9 @@ export default function Home() {
 
             {/* Content Side */}
             <div className="reveal order-1 lg:order-2 space-y-6">
-              <div className="inline-block rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white">
-                💡 Learn Together
+              <div className="inline-flex items-center gap-2 rounded-full glass px-6 py-2 text-sm font-semibold uppercase tracking-wider text-sky-300 mb-6">
+                <Users className="w-4 h-4" />
+                Learn Together
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
                 Collaborative Learning,{" "}
@@ -300,13 +309,13 @@ export default function Home() {
               <div className="flex flex-wrap gap-3 pt-4">
                 <Link
                   href="/courses"
-                  className="rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:shadow-xl hover:scale-105"
+                  className="rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 px-10 py-5 text-lg font-semibold text-white shadow-lg transition hover:shadow-xl hover:scale-105"
                 >
                   Explore Courses →
                 </Link>
                 <Link
                   href="/events"
-                  className="rounded-full border-2 border-slate-300 px-8 py-4 text-sm font-semibold text-slate-700 transition hover:border-blue-500 hover:text-blue-600"
+                  className="rounded-full border-2 border-slate-300 px-10 py-5 text-lg font-semibold text-slate-700 transition hover:border-blue-500 hover:text-blue-600"
                 >
                   Join Free Events
                 </Link>
@@ -407,8 +416,9 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto max-w-6xl px-4 md:px-6 text-center text-white">
           <div className="reveal">
-            <div className="inline-block rounded-full glass px-6 py-2 text-sm font-semibold uppercase tracking-wider text-sky-300 mb-6">
-              📊 Data-Driven Learning
+            <div className="inline-flex items-center gap-2 rounded-full glass px-6 py-2 text-sm font-semibold uppercase tracking-wider text-sky-300 mb-6">
+              <TrendingUp className="w-4 h-4" />
+              Data-Driven Learning
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
               Master Skills That <span className="gradient-text">Matter</span>
@@ -509,8 +519,9 @@ export default function Home() {
       {/* HOME: Community & Testimonials */}
       <section className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16 reveal">
         <div className="text-center">
-          <div className="inline-block rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
-            ⭐ Student Success Stories
+          <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white mb-4">
+            <Award className="w-3.5 h-3.5" />
+            Student Success Stories
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
             What Our Community Says
@@ -524,11 +535,10 @@ export default function Home() {
           {[
             {
               name: "Priya Sharma",
-              role: "B.Tech CSE, VIT Chennai",
+              role: "B.Tech CSE, Bangalore",
               content:
                 "Datanerdz AI helped me transition from a confused fresher to landing a Data Analyst role. The mentors were super supportive and the projects were exactly what I needed for my resume!",
               rating: 5,
-              avatar: "👩‍💻"
             },
             {
               name: "Arjun Reddy",
@@ -536,7 +546,6 @@ export default function Home() {
               content:
                 "I was scared of coding. The community here made learning so easy and fun. Now I'm confident building full-stack apps. Best decision I made!",
               rating: 5,
-              avatar: "👨‍💼"
             },
             {
               name: "Divya Krishnan",
@@ -544,7 +553,6 @@ export default function Home() {
               content:
                 "The 1:1 mentorship was a game-changer. My mentor helped me with interview prep, resume and even connected me with opportunities. Forever grateful!",
               rating: 5,
-              avatar: "👩‍🎓"
             },
           ].map((testimonial, i) => (
             <div
@@ -552,17 +560,17 @@ export default function Home() {
               className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 reveal"
               style={{transitionDelay: `${i * 0.1}s`}}
             >
-              <div className="mb-4 flex gap-1 text-amber-400 text-lg">
+              <div className="mb-4 flex gap-1">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <span key={i}>⭐</span>
+                  <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
                 ))}
               </div>
               <p className="text-sm leading-relaxed text-slate-700 italic">
                 "{testimonial.content}"
               </p>
               <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 text-2xl">
-                  {testimonial.avatar}
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-500">
+                  <GraduationCap className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-slate-900">
