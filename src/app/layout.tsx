@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import ContactModal from "@/components/ContactModal";
 import "./globals.css";
 
@@ -33,6 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [contactModalOpen, setContactModalOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <html lang="en">
@@ -77,15 +79,23 @@ export default function RootLayout({
                 </div>
               </Link>
               <nav className="hidden items-center gap-6 text-sm font-medium text-slate-700 md:flex">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="transition-colors hover:text-primary"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`transition-colors hover:text-primary relative ${
+                        isActive ? 'text-primary font-semibold' : ''
+                      }`}
+                    >
+                      {item.label}
+                      {isActive && (
+                        <span className="absolute -bottom-3 left-0 right-0 h-0.5 bg-primary rounded-full"></span>
+                      )}
+                    </Link>
+                  );
+                })}
               </nav>
               <button
                 onClick={() => setContactModalOpen(true)}

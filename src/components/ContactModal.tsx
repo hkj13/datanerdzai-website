@@ -68,12 +68,12 @@ ${data.message}
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl bg-white shadow-2xl">
+      <div className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-2xl bg-white shadow-2xl animate-scale-in">
         {/* Header */}
         <div className="border-b border-slate-200 px-6 py-4">
           <div className="flex items-center justify-between">

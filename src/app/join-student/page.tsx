@@ -1,37 +1,71 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Join as Student | Datanerdz AI",
-  description:
-    "Join Datanerdz AI as a student. Learn tech skills, get mentored, build projects, and kickstart your career with India's fastest-growing learning community.",
-};
+import { useEffect } from "react";
+import { GraduationCap, Rocket, RefreshCw, BookOpen, Users as UsersIcon, Wrench, FileText, Handshake, Target, UserPlus } from "lucide-react";
 
 export default function JoinStudentPage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="bg-surface">
-      {/* JOIN STUDENT: Hero Section */}
-      <section className="border-b border-slate-200 bg-gradient-to-br from-primary to-slate-900 py-16 text-white md:py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center md:px-6">
-          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
-            Start Your Tech Journey Today
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-200 md:text-lg">
-            Join Datanerdz AI and become part of a community that learns together, builds
-            together, and grows together
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#signup-form"
-              className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-primary shadow-lg transition hover:bg-slate-100"
-            >
-              Join Now - It's Free
-            </a>
-            <a
-              href="#who-is-this-for"
-              className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              Learn More
-            </a>
+      {/* JOIN STUDENT: Hero Section with Video */}
+      <section className="relative min-h-[70vh] flex items-center border-b border-slate-200 overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/8472218-uhd_4096_2160_25fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-950/90 to-blue-900/85 z-[1]"></div>
+        
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center md:px-6 text-white">
+          <div className="animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
+              <UserPlus className="w-3.5 h-3.5" />
+              Join the Community
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
+              Start Your <span className="gradient-text">Tech Journey</span> Today
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg md:text-xl text-slate-200 leading-relaxed mb-10">
+              Join Datanerdz AI and become part of a community that learns together, builds
+              together, and grows together
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="#signup-form"
+                className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-primary shadow-lg transition hover:bg-slate-100"
+              >
+                Join Now - It's Free
+              </a>
+              <a
+                href="#who-is-this-for"
+                className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Learn More
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -50,19 +84,19 @@ export default function JoinStudentPage() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              icon: "🎓",
+              icon: GraduationCap,
               title: "College Students",
               description:
                 "Engineering, B.Sc, B.Com, BBA, BCA students who want to learn in-demand tech skills alongside their degree",
             },
             {
-              icon: "🚀",
+              icon: Rocket,
               title: "Final Year & Recent Graduates",
               description:
                 "Freshers preparing for placements or looking to upskill before entering the job market",
             },
             {
-              icon: "🔄",
+              icon: RefreshCw,
               title: "Career Switchers",
               description:
                 "Working professionals from non-tech backgrounds looking to transition into Data, Development, or Product roles",
@@ -70,9 +104,13 @@ export default function JoinStudentPage() {
           ].map((audience) => (
             <div
               key={audience.title}
-              className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+              className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 reveal"
             >
-              <div className="text-4xl">{audience.icon}</div>
+              <div className="flex justify-center mb-4">
+                <div className="h-14 w-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                  <audience.icon className="w-7 h-7 text-white" />
+                </div>
+              </div>
               <h3 className="mt-4 text-base font-semibold text-slate-900">
                 {audience.title}
               </h3>
@@ -99,37 +137,37 @@ export default function JoinStudentPage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                icon: "📚",
+                icon: BookOpen,
                 title: "Live & Recorded Classes",
                 description:
                   "Join live sessions with industry experts or watch recordings at your own pace. Lifetime access to all course materials.",
               },
               {
-                icon: "👨‍🏫",
+                icon: UsersIcon,
                 title: "1:1 Mentor Support",
                 description:
                   "Get personalized guidance from experienced mentors. Doubt-clearing, career advice, and project reviews.",
               },
               {
-                icon: "🛠️",
+                icon: Wrench,
                 title: "Hands-On Projects",
                 description:
                   "Build real-world projects, capstones, and case studies. Create a portfolio that impresses recruiters.",
               },
               {
-                icon: "📝",
+                icon: FileText,
                 title: "Resume & Interview Prep",
                 description:
                   "Get your resume reviewed, practice mock interviews, improve LinkedIn, and learn negotiation skills.",
               },
               {
-                icon: "🤝",
+                icon: Handshake,
                 title: "Community & Networking",
                 description:
                   "Join our WhatsApp/Slack community. Connect with peers, collaborate on projects, attend events.",
               },
               {
-                icon: "🎯",
+                icon: Target,
                 title: "Job Referrals & Opportunities",
                 description:
                   "Access exclusive job postings, internship opportunities, and referrals through our hiring network.",
@@ -137,9 +175,13 @@ export default function JoinStudentPage() {
             ].map((benefit) => (
               <div
                 key={benefit.title}
-                className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 reveal"
               >
-                <div className="text-4xl">{benefit.icon}</div>
+                <div className="flex justify-center mb-4">
+                  <div className="h-14 w-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                    <benefit.icon className="w-7 h-7 text-white" />
+                  </div>
+                </div>
                 <h3 className="mt-4 text-base font-semibold text-slate-900">
                   {benefit.title}
                 </h3>

@@ -1,24 +1,58 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Clients & Partners | Datanerdz AI",
-  description:
-    "Datanerdz AI partners with colleges, universities, and companies to deliver training, workshops, and upskilling programs for students and professionals.",
-};
+import { useEffect } from "react";
+import { GraduationCap, Building2, Handshake, Users } from "lucide-react";
 
 export default function ClientsPage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="bg-surface">
-      {/* CLIENTS: Hero Section */}
-      <section className="border-b border-slate-200 bg-slate-900 py-12 text-white md:py-16">
-        <div className="mx-auto max-w-6xl px-4 md:px-6">
-          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Clients & Partners
-          </h1>
-          <p className="mt-3 max-w-2xl text-sm text-slate-200 md:text-base">
-            Datanerdz AI works with colleges, universities, and companies to deliver
-            impactful training programs, workshops, and upskilling initiatives
-          </p>
+      {/* CLIENTS: Hero Section with Video */}
+      <section className="relative min-h-[60vh] flex items-center border-b border-slate-200 overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/3192306-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-950/90 to-blue-900/85 z-[1]"></div>
+        
+        <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20 text-white">
+          <div className="animate-fade-in-up max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
+              <Users className="w-3.5 h-3.5" />
+              Our Partners
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
+              Clients & <span className="gradient-text">Partners</span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-200 leading-relaxed">
+              Datanerdz AI works with colleges, universities, and companies to deliver
+              impactful training programs, workshops, and upskilling initiatives
+            </p>
+          </div>
         </div>
       </section>
 
@@ -36,21 +70,21 @@ export default function ClientsPage() {
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {[
             {
-              icon: "🎓",
+              icon: GraduationCap,
               title: "Colleges & Universities",
               description:
                 "Department-level training programs, placement readiness bootcamps, final-year projects, and guest lectures for students.",
               examples: "Engineering, Commerce, Management colleges across India",
             },
             {
-              icon: "🏢",
+              icon: Building2,
               title: "Corporates & Startups",
               description:
                 "Customized upskilling programs for employees in Data, AI/ML, Web Development, and Product Management.",
               examples: "Tech companies, consulting firms, product startups",
             },
             {
-              icon: "🤝",
+              icon: Handshake,
               title: "Training & Community Partners",
               description:
                 "Co-branded bootcamps, hackathons, workshops, and community events focused on emerging technologies.",
@@ -59,9 +93,13 @@ export default function ClientsPage() {
           ].map((category) => (
             <div
               key={category.title}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 reveal"
             >
-              <div className="text-4xl">{category.icon}</div>
+              <div className="flex justify-center mb-4">
+                <div className="h-14 w-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                  <category.icon className="w-7 h-7 text-white" />
+                </div>
+              </div>
               <h3 className="mt-4 text-base font-semibold text-slate-900">
                 {category.title}
               </h3>

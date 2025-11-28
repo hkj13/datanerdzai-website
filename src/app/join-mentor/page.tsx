@@ -1,37 +1,71 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Join as Mentor | Datanerdz AI",
-  description:
-    "Become a mentor at Datanerdz AI and help students build successful tech careers. Share your expertise, build your personal brand, and make an impact.",
-};
+import { useEffect } from "react";
+import { Sparkles, Rocket, Handshake, Clock, BookOpen, Award, Briefcase, Target, Star, FileText, MessageCircle, GraduationCap, Users } from "lucide-react";
 
 export default function JoinMentorPage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="bg-surface">
-      {/* JOIN MENTOR: Hero Section */}
-      <section className="border-b border-slate-200 bg-gradient-to-br from-primary to-slate-900 py-16 text-white md:py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center md:px-6">
-          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">
-            Become a Datanerdz AI Mentor
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-200 md:text-lg">
-            Share your expertise, shape careers, and make a lasting impact on the next
-            generation of tech professionals
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#application-form"
-              className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-primary shadow-lg transition hover:bg-slate-100"
-            >
-              Apply Now
-            </a>
-            <a
-              href="#why-mentor"
-              className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-            >
-              Learn More
-            </a>
+      {/* JOIN MENTOR: Hero Section with Video */}
+      <section className="relative min-h-[70vh] flex items-center border-b border-slate-200 overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/8852577-hd_1920_1080_30fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-950/90 to-blue-900/85 z-[1]"></div>
+        
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-20 text-center md:px-6 text-white">
+          <div className="animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6">
+              <Users className="w-3.5 h-3.5" />
+              Join Our Team
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">
+              Become a <span className="gradient-text">Datanerdz AI</span> Mentor
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg md:text-xl text-slate-200 leading-relaxed mb-10">
+              Share your expertise, shape careers, and make a lasting impact on the next
+              generation of tech professionals
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="#application-form"
+                className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-primary shadow-lg transition hover:bg-slate-100"
+              >
+                Apply Now
+              </a>
+              <a
+                href="#why-mentor"
+                className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Learn More
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -50,37 +84,37 @@ export default function JoinMentorPage() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              icon: "💫",
+              icon: Sparkles,
               title: "Impact Students' Careers",
               description:
                 "Help students navigate their tech journey, build skills, and land their dream jobs. Your guidance can change lives.",
             },
             {
-              icon: "🚀",
+              icon: Rocket,
               title: "Build Personal Brand",
               description:
                 "Establish yourself as a thought leader. Get featured on our platform, social media, and community events.",
             },
             {
-              icon: "🤝",
+              icon: Handshake,
               title: "Networking Opportunities",
               description:
                 "Connect with fellow mentors, industry professionals, and passionate learners from across India.",
             },
             {
-              icon: "⏰",
+              icon: Clock,
               title: "Flexible Contribution",
               description:
                 "Mentor on weekends or evenings. Dedicate as much or as little time as you want. No fixed commitments.",
             },
             {
-              icon: "📚",
+              icon: BookOpen,
               title: "Keep Learning",
               description:
                 "Teaching is the best way to learn. Stay updated, sharpen your own skills, and explore new perspectives.",
             },
             {
-              icon: "🎓",
+              icon: Award,
               title: "Recognition & Rewards",
               description:
                 "Get certificates, LinkedIn recommendations, and exclusive invitations to partner events and webinars.",
@@ -88,9 +122,13 @@ export default function JoinMentorPage() {
           ].map((benefit) => (
             <div
               key={benefit.title}
-              className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+              className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 reveal"
             >
-              <div className="text-4xl">{benefit.icon}</div>
+              <div className="flex justify-center mb-4">
+                <div className="h-14 w-14 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                  <benefit.icon className="w-7 h-7 text-white" />
+                </div>
+              </div>
               <h3 className="mt-4 text-base font-semibold text-slate-900">
                 {benefit.title}
               </h3>
@@ -120,32 +158,34 @@ export default function JoinMentorPage() {
                 title: "Working Professionals",
                 description:
                   "Data Scientists, Software Engineers, Product Managers, Designers with 2+ years of industry experience",
-                icon: "💼",
+                icon: Briefcase,
               },
               {
                 title: "Startup Founders",
                 description:
                   "Entrepreneurs who've built products, raised funding, or scaled teams and want to share their journey",
-                icon: "🚀",
+                icon: Rocket,
               },
               {
                 title: "Freelancers & Consultants",
                 description:
                   "Independent professionals with client experience in Data, Web, App, or Business domains",
-                icon: "🎯",
+                icon: Target,
               },
               {
                 title: "Industry Experts",
                 description:
                   "Specialists in AI/ML, Analytics, DevOps, Cloud, Marketing, Finance willing to guide students",
-                icon: "⭐",
+                icon: Star,
               },
             ].map((profile) => (
               <div
                 key={profile.title}
-                className="flex gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+                className="flex gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:shadow-lg reveal"
               >
-                <div className="text-3xl">{profile.icon}</div>
+                <div className="flex-shrink-0 h-12 w-12 rounded-lg bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
+                  <profile.icon className="w-6 h-6 text-blue-600" />
+                </div>
                 <div>
                   <h3 className="text-base font-semibold text-slate-900">
                     {profile.title}
@@ -183,36 +223,36 @@ export default function JoinMentorPage() {
               title: "Apply",
               description:
                 "Fill out the application form below. Share your background, expertise, and why you want to mentor.",
-              icon: "📝",
+              icon: FileText,
             },
             {
               step: "2",
               title: "Short Discussion",
               description:
                 "Our team will reach out for a quick call to understand your availability, interests, and how you'd like to contribute.",
-              icon: "💬",
+              icon: MessageCircle,
             },
             {
               step: "3",
               title: "Start Mentoring",
               description:
                 "Get onboarded, join our mentor community, and start helping students. We'll match you with learners based on your expertise.",
-              icon: "🎓",
+              icon: GraduationCap,
             },
           ].map((phase) => (
             <div
               key={phase.step}
-              className="flex gap-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+              className="flex gap-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg reveal"
             >
               <div className="flex-shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-2xl font-bold text-primary">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-100 to-cyan-100 text-lg font-bold text-blue-600">
                   {phase.step}
                 </div>
               </div>
               <div>
                 <div className="flex items-center gap-3">
                   <h3 className="text-lg font-semibold text-slate-900">{phase.title}</h3>
-                  <span className="text-2xl">{phase.icon}</span>
+                  <phase.icon className="w-5 h-5 text-blue-600" />
                 </div>
                 <p className="mt-2 text-sm text-slate-600">{phase.description}</p>
               </div>
